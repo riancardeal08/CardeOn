@@ -2127,5 +2127,67 @@ const PWA = (() => {
 PWA.init();
 
 </script>
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#030303">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
+}
+
+let deferredPrompt;
+
+const installBtn = document.createElement("button");
+
+installBtn.innerHTML = "Instalar app";
+
+installBtn.style.position = "fixed";
+installBtn.style.top = "20px";
+installBtn.style.right = "20px";
+installBtn.style.zIndex = "9999";
+installBtn.style.background = "#39ff88";
+installBtn.style.color = "#000";
+installBtn.style.border = "none";
+installBtn.style.padding = "14px 18px";
+installBtn.style.borderRadius = "14px";
+installBtn.style.fontWeight = "700";
+installBtn.style.cursor = "pointer";
+installBtn.style.display = "none";
+installBtn.style.boxShadow = "0 10px 30px rgba(0,0,0,.35)";
+installBtn.style.fontFamily = "Outfit,sans-serif";
+
+document.body.appendChild(installBtn);
+
+window.addEventListener("beforeinstallprompt", e => {
+
+  e.preventDefault();
+
+  deferredPrompt = e;
+
+  installBtn.style.display = "block";
+
+});
+
+installBtn.addEventListener("click", async () => {
+
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+
+  const { outcome } = await deferredPrompt.userChoice;
+
+  if (outcome === "accepted") {
+
+    installBtn.style.display = "none";
+
+  }
+
+});
+</script>
 </body>
 </html>
