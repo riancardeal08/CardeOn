@@ -1740,6 +1740,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   deferredPrompt = e;
 
   installBtn.style.display = 'flex';
+installBtn.innerHTML = '<i class="ti ti-download"></i> Instalar app';
 
 });
 
@@ -1845,3 +1846,22 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+<script>
+document.getElementById('install-btn').style.display = 'flex';
+
+document.getElementById('install-btn').onclick = () => {
+
+  if (deferredPrompt) {
+
+    deferredPrompt.prompt();
+
+  } else {
+
+    alert(
+      'Para instalar:\\n\\n1. Abra no Chrome mobile\\n2. Clique nos 3 pontos\\n3. Adicionar à tela inicial'
+    );
+
+  }
+
+};
+</script>
