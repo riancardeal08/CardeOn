@@ -1801,7 +1801,6 @@ const PAYS = ['Crédito','Débito','Pix','Dinheiro','Boleto']
 const SK = 'ft3'
 let exps = [], editId = null, selCat = '', selPay = '', fCat = ''
   
-}
 function load(){ try{exps=JSON.parse(localStorage.getItem(SK)||'[]')}catch{exps=[]} }
 function persist(){ localStorage.setItem(SK, JSON.stringify(exps)) }
 function gc(id){ return CATS.find(c=>c.id===id)||CATS[7] }
