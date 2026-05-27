@@ -1887,6 +1887,7 @@ let finance = {
   creditLimit: 0,
   creditUsed: 0
 }
+  
     function getAvailableCredit(){
   return finance.creditLimit - finance.creditUsed
 }
@@ -2447,15 +2448,6 @@ let finance = {
 
 function getAvailableCredit(){
   return finance.creditLimit - finance.creditUsed
-}
-
-function fmt(v){
-
-  return v.toLocaleString('pt-BR',{
-    style:'currency',
-    currency:'BRL'
-  })
-
 }
 
 function renderFinance(){
