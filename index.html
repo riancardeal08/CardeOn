@@ -2455,20 +2455,20 @@ function renderFinance(){
   document.getElementById(
     'balance-value'
   ).textContent =
-    fmt(finance.balance)
+    fmtR(finance.balance)
 
   document.getElementById(
     'credit-value'
   ).textContent =
-    fmt(getAvailableCredit())
+    fmtR(getAvailableCredit())
 
   document.getElementById(
     'credit-limit'
   ).textContent =
-    fmt(finance.creditLimit)
+    fmtR(finance.creditLimit)
 
 }
-
+  
 renderFinance()
 </script>
 <link rel="manifest" href="manifest.json">
