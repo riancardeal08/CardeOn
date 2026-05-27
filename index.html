@@ -3,23 +3,37 @@
 <head>
 
 <style>
+<style>
 
 .finance-container{
-  display:flex;
-  gap:20px;
-  margin-top:20px;
-  flex-wrap:wrap;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin:20px;
 }
 
 .card{
-  background:#111;
-  color:white;
+  background:#111827;
+  border:1px solid #1f2937;
+  border-radius:18px;
   padding:20px;
-  border-radius:16px;
-  width:220px;
-  border:1px solid #222;
+  color:white;
 }
 
+.card h2{
+  font-size:14px;
+  color:#9ca3af;
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:24px;
+  font-weight:700;
+  color:#00ff99;
+}
+
+</style>
+  
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -1665,6 +1679,30 @@ input[type=date] { color-scheme: dark; }
 
   <!-- ─── DASHBOARD ─── -->
   <div id="pg-dash" class="page active">
+    <div class="finance-container">
+
+  <div class="card">
+    <h2>Saldo</h2>
+    <p id="balance">R$ 5000</p>
+  </div>
+
+  <div class="card">
+    <h2>Limite</h2>
+    <p id="creditLimit">R$ 8000</p>
+  </div>
+
+  <div class="card">
+    <h2>Usado</h2>
+    <p id="creditUsed">R$ 1200</p>
+  </div>
+
+  <div class="card">
+    <h2>Disponível</h2>
+    <p id="available">R$ 11800</p>
+  </div>
+
+</div>
+    
     <div class="finance-container">
 
   <div class="card">
