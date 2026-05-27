@@ -1806,6 +1806,26 @@ let exps = [], editId = null, selCat = '', selPay = '', fCat = ''
   creditUsed: 1200
 }
 
+  function updateFinance() {
+
+  let availableCredit =
+    finance.creditLimit - finance.creditUsed;
+
+  let totalAvailable =
+    finance.balance + availableCredit;
+
+  document.getElementById("balance").innerText =
+    `R$ ${finance.balance}`;
+
+  document.getElementById("credit").innerText =
+    `R$ ${availableCredit}`;
+
+  document.getElementById("total").innerText =
+    `R$ ${totalAvailable}`;
+}
+
+  updateFinance();
+  
   console.log(finance)
   
 function load(){ try{exps=JSON.parse(localStorage.getItem(SK)||'[]')}catch{exps=[]} }
