@@ -1663,6 +1663,58 @@ input[type=date] { color-scheme: dark; }
       <p class="hero-amount empty" id="d-total">
         <span class="curr">R$</span><span id="d-total-num">0,00</span>
       </p>
+
+      <div id="finance-panel" style="
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+">
+
+  <div class="card card-p">
+    <div style="font-size:10px;color:var(--t3)">
+      Disponível
+    </div>
+
+    <div id="available-balance" style="
+      margin-top:6px;
+      font-size:14px;
+      font-weight:700;
+    ">
+      R$ 0,00
+    </div>
+  </div>
+
+  <div class="card card-p">
+    <div style="font-size:10px;color:var(--t3)">
+      Crédito
+    </div>
+
+    <div id="credit-balance" style="
+      margin-top:6px;
+      font-size:14px;
+      font-weight:700;
+    ">
+      R$ 0,00
+    </div>
+  </div>
+
+  <div class="card card-p">
+    <div style="font-size:10px;color:var(--t3)">
+      Total
+    </div>
+
+    <div id="total-balance" style="
+      margin-top:6px;
+      font-size:14px;
+      font-weight:700;
+    ">
+      R$ 0,00
+    </div>
+  </div>
+
+</div>
+      
       <div class="hero-meta">
 
         <div id="ceo-status" style="
