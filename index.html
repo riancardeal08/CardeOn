@@ -2328,14 +2328,23 @@ if(ceoToggle){
   const saved =
     localStorage.getItem('ceo-mode')
 
-  if(saved === 'on'){
-    document.body.classList.add('ceo-mode')
-    ceoToggle.checked = true
-  }
+ if(saved === 'on'){
 
+  document.body.classList.add('ceo-mode')
+
+  ceoToggle.checked = true
+
+  document
+    .getElementById('ceo-panel')
+    .style.display = 'block'
+}
   ceoToggle.addEventListener('change', () => {
 
     if(ceoToggle.checked){
+      
+      document
+  .getElementById('ceo-panel')
+  .style.display = 'block'
 
       document.body.classList.add('ceo-mode')
 
@@ -2345,7 +2354,11 @@ if(ceoToggle){
       )
 
     } else {
-
+      
+document
+  .getElementById('ceo-panel')
+  .style.display = 'none'
+      
       document.body.classList.remove('ceo-mode')
 
       localStorage.setItem(
