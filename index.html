@@ -2156,11 +2156,21 @@ function txRow(e){
   const installments =
     Number(e.installments || 1)
 
-  const installmentText =
-    installments > 1
-      ? ` · ${installments}x de ${fmtR(e.amount / installments)}`
-      : ''
+ const startDate = new Date(e.date + 'T12:00:00')
+const now = new Date()
 
+const monthsPassed =
+  (now.getFullYear() - startDate.getFullYear()) * 12 +
+  (now.getMonth() - startDate.getMonth())
+
+const remaining =
+  Math.max(installments - monthsPassed, 0)
+
+const installmentText =
+  installments > 1
+    ? ` · ${installments}x de ${fmtR(e.amount / installments)} · Restam ${remaining} parcela${remaining !== 1 ? 's' : ''}`
+    : ''
+  
   return `<div class="tx-row">
     <div class="tx-ico" style="background:${c.c}12;border:0.5px solid ${c.c}1e">
       <i class="ti ${c.ico}" style="color:${c.c}cc"></i>
