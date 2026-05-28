@@ -2074,6 +2074,34 @@ function load(){ try{exps=JSON.parse(localStorage.getItem(SK)||'[]')}catch{exps=
 }
   
 function persist(){ localStorage.setItem(SK, JSON.stringify(exps)) }
+
+  const FK = 'fintrack_finance'
+
+let finance = {
+  available: 0,
+  creditLimit: 0
+}
+
+function loadFinance(){
+  try{
+    finance = JSON.parse(
+      localStorage.getItem(FK) || '{"available":0,"creditLimit":0}'
+    )
+  }catch{
+    finance = {
+      available: 0,
+      creditLimit: 0
+    }
+  }
+}
+
+function persistFinance(){
+  localStorage.setItem(
+    FK,
+    JSON.stringify(finance)
+  )
+}
+  
 function gc(id){ return CATS.find(c=>c.id===id)||CATS[7] }
 function fmtR(v){ return 'R$\u00a0'+parseFloat(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) }
 function tod(){ return new Date().toISOString().split('T')[0] }
@@ -2425,6 +2453,8 @@ function toast(msg){
 }
 
 load();
+
+  loadFinance();
   
   generateRecurring();
   
