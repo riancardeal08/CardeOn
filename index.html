@@ -2075,12 +2075,6 @@ const PAYS = ['Crédito','Débito','Pix','Dinheiro','Boleto']
 const SK = 'ft3'
 let exps = [], editId = null, selCat = '', selPay = '', fCat = ''
   let finance = {
-  balance: 5000,
-  creditLimit: 8000,
-  creditUsed: 1200
-}
-
-  console.log(finance)
   
 function load(){ try{exps=JSON.parse(localStorage.getItem(SK)||'[]')}catch{exps=[]} }
   function generateRecurring(){
