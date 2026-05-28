@@ -2620,6 +2620,28 @@ document
 
 }
 
+function generateRecurring(){
+
+  const recurringTx =
+    transactions.filter(
+      t =>
+        t.recurring &&
+        t.recurring !== 'none'
+    );
+
+  recurringTx.forEach(tx=>{
+
+    console.log(
+      'Recorrente:',
+      tx
+    );
+
+  });
+
+}
+
+generateRecurring();
+  
 </script>
 <link rel="manifest" href="manifest.json">
 
