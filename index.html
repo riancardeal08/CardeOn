@@ -2311,13 +2311,31 @@ function saveExp(){
   if(!selCat){ document.getElementById('e-cat').style.display='block'; ok=false }
   else document.getElementById('e-cat').style.display='none'
   if(!ok) return
-  const data={
-    amount:amt, category:selCat,
+  
+ const data={
+
+    amount:amt,
+    category:selCat,
+
+    installments:Number(
+      document.getElementById(
+        'f-installments'
+      ).value
+    ),
+
+    recurring:
+      document.getElementById(
+        'f-recurring'
+      ).value,
+
     date:document.getElementById('f-date').value||tod(),
+
     place:document.getElementById('f-place').value.trim(),
+
     note:document.getElementById('f-note').value.trim(),
+
     paymentMethod:selPay
-  }
+      
   if(editId){
     const i=exps.findIndex(e=>e.id===editId)
     if(i!==-1) exps[i]={...exps[i],...data}
