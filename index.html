@@ -1436,7 +1436,99 @@ input[type=date] { color-scheme: dark; }
 .switch input:checked + .slider::before{
   transform:translateX(22px);
 }
+  
+/* CEO MODE ELITE */
 
+.ceo-mode{
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(92,219,149,.10),
+      transparent 35%
+    ),
+    #030303;
+
+  transition:.4s ease;
+}
+
+/* cards */
+
+.ceo-mode .card{
+
+  background:
+    rgba(255,255,255,.05);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:
+    blur(28px)
+    saturate(180%);
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,.45),
+    0 0 30px rgba(92,219,149,.08);
+
+  transition:.4s;
+}
+
+/* saldo */
+
+.ceo-mode .hero-amount{
+
+  text-shadow:
+    0 0 18px rgba(92,219,149,.18);
+}
+
+/* navbar */
+
+.ceo-mode .nav-inner{
+
+  background:
+    rgba(8,8,8,.75);
+
+  backdrop-filter:
+    blur(22px);
+
+  border:
+    1px solid rgba(255,255,255,.06);
+}
+
+/* botao ativo */
+
+.ceo-mode .nav-btn.active{
+
+  color:#8cffbf;
+}
+
+.ceo-mode .nav-btn.active i{
+
+  filter:
+    drop-shadow(
+      0 0 10px rgba(92,219,149,.35)
+    );
+}
+
+/* glow suave */
+
+.ceo-mode::before{
+
+  content:'';
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(92,219,149,.08),
+      transparent 60%
+    );
+}
+  
 </style>
 </head>
 <body>
@@ -1559,6 +1651,53 @@ input[type=date] { color-scheme: dark; }
         <span class="curr">R$</span><span id="d-total-num">0,00</span>
       </p>
       <div class="hero-meta">
+
+        <div id="ceo-status" style="
+  display:none;
+  margin-top:16px;
+">
+
+  <div style="
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  ">
+
+    <div style="
+      padding:10px 14px;
+      border-radius:14px;
+
+      background:
+        rgba(92,219,149,.10);
+
+      border:
+        1px solid rgba(92,219,149,.12);
+
+      font-size:12px;
+      font-weight:600;
+
+      color:#8cffbf;
+    ">
+      👑 CEO MODE ACTIVE
+    </div>
+
+    <div style="
+      padding:10px 14px;
+      border-radius:14px;
+
+      background:
+        rgba(255,255,255,.05);
+
+      font-size:12px;
+      font-weight:600;
+    ">
+      📈 Performance +12%
+    </div>
+
+  </div>
+
+</div>
+        
         <span id="d-chip" style="display:none" class="pill pill-green"></span>
       </div>
     </div>
@@ -2332,6 +2471,10 @@ if(ceoToggle){
 
   document.body.classList.add('ceo-mode')
 
+   document
+  .getElementById('ceo-status')
+  .style.display = 'block'
+
   ceoToggle.checked = true
 
   document
@@ -2360,6 +2503,10 @@ document
   .style.display = 'none'
       
       document.body.classList.remove('ceo-mode')
+      
+      document
+  .getElementById('ceo-status')
+  .style.display = 'none'
 
       localStorage.setItem(
         'ceo-mode',
