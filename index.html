@@ -2152,13 +2152,22 @@ function rDash(){
 // ── Transaction row ──
 function txRow(e){
   const c=gc(e.category)
+
+  const installments =
+    Number(e.installments || 1)
+
+  const installmentText =
+    installments > 1
+      ? ` · ${installments}x de ${fmtR(e.amount / installments)}`
+      : ''
+
   return `<div class="tx-row">
     <div class="tx-ico" style="background:${c.c}12;border:0.5px solid ${c.c}1e">
       <i class="ti ${c.ico}" style="color:${c.c}cc"></i>
     </div>
     <div class="tx-info">
       <p class="tx-name">${e.place||c.l}</p>
-      <p class="tx-meta">${fmtDs(e.date)}${e.paymentMethod?' · '+e.paymentMethod:''}${e.note?' · '+e.note.slice(0,22):''}</p>
+      <p class="tx-meta">${fmtDs(e.date)}${e.paymentMethod?' · '+e.paymentMethod:''}${installmentText}${e.note?' · '+e.note.slice(0,22):''}</p>
     </div>
     <div class="tx-right">
       <p class="tx-amt">${fmtR(e.amount)}</p>
@@ -2169,7 +2178,7 @@ function txRow(e){
     </div>
   </div>`
 }
-
+  
 // ── History ──
 function rHist(){
   const q=(document.getElementById('h-search')?.value||'').toLowerCase()
