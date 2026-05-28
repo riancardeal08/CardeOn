@@ -2031,6 +2031,48 @@ let exps = [], editId = null, selCat = '', selPay = '', fCat = ''
   console.log(finance)
   
 function load(){ try{exps=JSON.parse(localStorage.getItem(SK)||'[]')}catch{exps=[]} }
+  function generateRecurring(){
+
+  const now = new Date()
+
+  exps.forEach(exp=>{
+
+    if(
+      exp.recurring === 'monthly'
+    ){
+
+      const expDate =
+        new Date(
+          exp.date + 'T12:00:00'
+        )
+
+      const sameMonth =
+        expDate.getMonth() === now.getMonth()
+        &&
+        expDate.getFullYear() === now.getFullYear()
+
+      if(!sameMonth){
+
+        const newExp = {
+
+          ...exp,
+
+          date:tod()
+
+        }
+
+        exps.push(newExp)
+
+      }
+
+    }
+
+  })
+
+  persist()
+
+}
+  
 function persist(){ localStorage.setItem(SK, JSON.stringify(exps)) }
 function gc(id){ return CATS.find(c=>c.id===id)||CATS[7] }
 function fmtR(v){ return 'R$\u00a0'+parseFloat(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) }
@@ -2363,7 +2405,11 @@ function toast(msg){
   clearTimeout(tTimer); tTimer=setTimeout(()=>t.classList.remove('show'),2200)
 }
 
-load(); rDash()
+load();
+  
+  generateRecurring();
+  
+  rDash()
 
 
 
