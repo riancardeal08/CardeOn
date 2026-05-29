@@ -2524,10 +2524,19 @@ function saveExp(){
     const i=exps.findIndex(e=>e.id===editId)
     if(i!==-1) exps[i]={...exps[i],...data}
     toast('Gasto atualizado')
-  } else {
-    exps.unshift({...data, id:crypto.randomUUID(), createdAt:new Date().toISOString()})
-    toast('Gasto adicionado')
+ } else {
+  exps.unshift({...data, id:crypto.randomUUID(), createdAt:new Date().toISOString()})
+
+  if(data.paymentMethod === 'Crédito'){
+    finance.creditLimit -= Number(data.amount || 0)
+  }else{
+    finance.available -= Number(data.amount || 0)
   }
+
+  saveFinance()
+
+  toast('Gasto adicionado')
+}
   persist(); closeModal(); rDash()
   if(document.getElementById('pg-hist').classList.contains('active')) rHist()
   if(document.getElementById('pg-rep').classList.contains('active'))  rRep()
