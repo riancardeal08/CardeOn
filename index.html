@@ -2251,6 +2251,8 @@ function rDash(){
 
   const available = Number(finance.available || 0)
 const credit = Number(finance.creditLimit || 0)
+const creditTotal = Number(finance.creditTotal || 0)
+const creditUsed = creditTotal - credit
 const totalBalance = available + credit
 
 document.getElementById('available-balance').textContent = fmtR(available)
