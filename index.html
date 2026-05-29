@@ -2233,8 +2233,37 @@ const credit = Number(finance.creditLimit || 0)
 const totalBalance = available + credit
 
 document.getElementById('available-balance').textContent = fmtR(available)
+  
+  const availableEl =
+  document.getElementById('available-balance')
+
+if(available < 0){
+  availableEl.style.color = '#e05454'
+}else{
+  availableEl.style.color = ''
+}
+  
 document.getElementById('credit-balance').textContent = fmtR(credit)
+  
+  const creditEl =
+  document.getElementById('credit-balance')
+
+if(credit < 0){
+  creditEl.style.color = '#e05454'
+}else{
+  creditEl.style.color = ''
+}
+  
 document.getElementById('total-balance').textContent = fmtR(totalBalance)
+  
+  const totalEl =
+  document.getElementById('total-balance')
+
+if(totalBalance < 0){
+  totalEl.style.color = '#e05454'
+}else{
+  totalEl.style.color = ''
+}
 
   const chip=document.getElementById('d-chip')
   if(me.length>0){
