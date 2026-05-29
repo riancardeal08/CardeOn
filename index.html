@@ -2309,6 +2309,16 @@ const creditTotal = Number(finance.creditTotal || 0)
 const creditUsed = creditTotal - credit
 const totalBalance = available + credit
 
+  const goal = Number(finance.goal || 0)
+
+const goalProgress =
+  goal > 0
+    ? Math.min(
+        100,
+        Math.round((available / goal) * 100)
+      )
+    : 0
+
 document.getElementById('available-balance').textContent = fmtR(available)
   
   const availableEl =
@@ -2335,6 +2345,12 @@ if(credit < 0){
 }
   
 document.getElementById('total-balance').textContent = fmtR(totalBalance)
+
+document.getElementById('goal-value').textContent =
+  fmtR(goal)
+
+document.getElementById('goal-progress').textContent =
+  'Progresso: ' + goalProgress + '%'
   
   const totalEl =
   document.getElementById('total-balance')
