@@ -2187,6 +2187,14 @@ function rDash(){
   numEl.textContent = parseFloat(t||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})
   totEl.className = 'hero-amount '+(t>0?'has-value':'empty')
 
+  const available = Number(finance.available || 0)
+const credit = Number(finance.creditLimit || 0)
+const totalBalance = available + credit
+
+document.getElementById('available-balance').textContent = fmtR(available)
+document.getElementById('credit-balance').textContent = fmtR(credit)
+document.getElementById('total-balance').textContent = fmtR(totalBalance)
+
   const chip=document.getElementById('d-chip')
   if(me.length>0){
     chip.style.display='inline-flex'
