@@ -1971,6 +1971,20 @@ input[type=date] { color-scheme: dark; }
   </div>
 </div>
 
+<div class="field">
+  <span class="field-label">Meta Financeira</span>
+
+  <div class="input-wrap">
+    <span class="input-curr">R$</span>
+
+    <input
+      type="number"
+      id="cfg-goal"
+      placeholder="10000"
+    >
+  </div>
+</div>
+    
 <button class="save-btn" onclick="saveFinanceSettings()">
   Salvar valores
 </button>
@@ -2121,7 +2135,8 @@ const SK = 'ft3'
 let finance = {
   available: 0,
   creditLimit: 0,
-  creditTotal: 0
+  creditTotal: 0,
+  goal: 0
 }
   
 let exps = [], editId = null, selCat = '', selPay = '', fCat = ''
