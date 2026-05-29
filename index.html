@@ -2275,6 +2275,9 @@ if(available < 0){
 }
   
 document.getElementById('credit-balance').textContent = fmtR(credit)
+
+document.getElementById('credit-used').textContent =
+  'Usado: ' + fmtR(creditUsed)
   
   const creditEl =
   document.getElementById('credit-balance')
