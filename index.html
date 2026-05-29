@@ -1931,6 +1931,28 @@ input[type=date] { color-scheme: dark; }
 
     </div>
 
+    <div style="height:14px"></div>
+
+<div class="field">
+  <span class="field-label">Saldo Disponível</span>
+  <div class="input-wrap">
+    <span class="input-curr">R$</span>
+    <input type="number" id="cfg-available" placeholder="0,00">
+  </div>
+</div>
+
+<div class="field">
+  <span class="field-label">Crédito Disponível</span>
+  <div class="input-wrap">
+    <span class="input-curr">R$</span>
+    <input type="number" id="cfg-credit" placeholder="0,00">
+  </div>
+</div>
+
+<button class="save-btn" onclick="saveFinanceSettings()">
+  Salvar valores
+</button>
+    
   </div>
 
 </div>
@@ -2132,13 +2154,38 @@ function persist(){ localStorage.setItem(SK, JSON.stringify(exps)) }
       localStorage.getItem('financeData')
     ) || finance
   }catch{}
-}
+    
+document.getElementById('cfg-available').value =
+  finance.available || ''
+
+document.getElementById('cfg-credit').value =
+  finance.creditLimit || ''
+  }
 
 function saveFinance(){
   localStorage.setItem(
     'financeData',
     JSON.stringify(finance)
   )
+}
+  
+  function saveFinanceSettings(){
+
+  finance.available =
+    Number(
+      document.getElementById('cfg-available').value || 0
+    )
+
+  finance.creditLimit =
+    Number(
+      document.getElementById('cfg-credit').value || 0
+    )
+
+  saveFinance()
+
+  rDash()
+
+  toast('Valores salvos')
 }
 
 function gc(id){ return CATS.find(c=>c.id===id)||CATS[7] }
