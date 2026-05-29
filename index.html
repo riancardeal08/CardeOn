@@ -2073,6 +2073,12 @@ const CATS = [
 ]
 const PAYS = ['Crédito','Débito','Pix','Dinheiro','Boleto']
 const SK = 'ft3'
+
+let finance = {
+  available: 0,
+  creditLimit: 0
+}
+  
 let exps = [], editId = null, selCat = '', selPay = '', fCat = ''
   
 function load(){ try{exps=JSON.parse(localStorage.getItem(SK)||'[]')}catch{exps=[]} }
@@ -2119,6 +2125,21 @@ function load(){ try{exps=JSON.parse(localStorage.getItem(SK)||'[]')}catch{exps=
 }
   
 function persist(){ localStorage.setItem(SK, JSON.stringify(exps)) }
+
+  function loadFinance(){
+  try{
+    finance = JSON.parse(
+      localStorage.getItem('financeData')
+    ) || finance
+  }catch{}
+}
+
+function saveFinance(){
+  localStorage.setItem(
+    'financeData',
+    JSON.stringify(finance)
+  )
+}
 
   const FK = 'fintrack_finance'
 
