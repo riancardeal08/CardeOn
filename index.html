@@ -1942,6 +1942,20 @@ input[type=date] { color-scheme: dark; }
 </div>
 
 <div class="field">
+  <span class="field-label">Limite Total do Cartão</span>
+
+  <div class="input-wrap">
+    <span class="input-curr">R$</span>
+
+    <input
+      type="number"
+      id="cfg-credit-total"
+      placeholder="0,00"
+    >
+  </div>
+</div>
+    
+<div class="field">
   <span class="field-label">Crédito Disponível</span>
   <div class="input-wrap">
     <span class="input-curr">R$</span>
@@ -2158,7 +2172,10 @@ function persist(){ localStorage.setItem(SK, JSON.stringify(exps)) }
     
 document.getElementById('cfg-available').value =
   finance.available || ''
-
+    
+document.getElementById('cfg-credit-total').value =
+  finance.creditTotal || ''
+    
 document.getElementById('cfg-credit').value =
   finance.creditLimit || ''
   }
@@ -2177,6 +2194,9 @@ function saveFinance(){
       document.getElementById('cfg-available').value || 0
     )
 
+finance.creditTotal =
+  Number(document.getElementById('cfg-credit-total').value || 0)
+    
   finance.creditLimit =
     Number(
       document.getElementById('cfg-credit').value || 0
