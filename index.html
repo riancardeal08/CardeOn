@@ -3041,24 +3041,15 @@ if(ceoToggle){
   const saved =
     localStorage.getItem('ceo-mode')
 
- if(saved === 'on'){
+if(saved === 'on'){
 
   document.body.classList.add('ceo-mode')
 
-   document
-  .getElementById('ceo-status')
-  .style.display = 'block'
-
   ceoToggle.checked = true
 
-  document
-    .getElementById('ceo-panel')
-   
-document
-  .getElementById('ceo-status')
-  .style.display = 'block'
-    
-    .style.display = 'block'
+  document.getElementById('ceo-panel').style.display = 'block'
+
+  document.getElementById('ceo-status').style.display = 'block'
 }
   ceoToggle.addEventListener('change', () => {
 
