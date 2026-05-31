@@ -2313,7 +2313,11 @@ function meExps(){
   const n=new Date()
   return exps.filter(e=>{const d=new Date(e.date+'T12:00:00');return d.getMonth()===n.getMonth()&&d.getFullYear()===n.getFullYear()})
 }
-function meTotal(){ return meExps().reduce((s,e)=>s+parseFloat(e.amount||0),0) }
+function meTotal(){
+  return meExps()
+    .filter(e => e.type !== 'income')
+    .reduce((s,e)=>s+parseFloat(e.amount||0),0)
+}
 
 // ── Navigation ──
 function goPage(p){
