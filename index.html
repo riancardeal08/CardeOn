@@ -2716,11 +2716,15 @@ function delExp(id){
   const exp = exps.find(e => e.id === id)
 
   if(exp){
-    if(exp.paymentMethod === 'Crédito'){
-      finance.creditLimit += Number(exp.amount || 0)
-    }else{
-      finance.available += Number(exp.amount || 0)
-    }
+    if(exp.type === 'income'){
+  finance.available -= Number(exp.amount || 0)
+}else{
+  if(exp.paymentMethod === 'Crédito'){
+    finance.creditLimit += Number(exp.amount || 0)
+  }else{
+    finance.available += Number(exp.amount || 0)
+  }
+}
 
     saveFinance()
   }
