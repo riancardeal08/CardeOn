@@ -2462,7 +2462,9 @@ const installmentText =
       <p class="tx-meta">${fmtDs(e.date)}${e.paymentMethod?' · '+e.paymentMethod:''}${installmentText}${e.note?' · '+e.note.slice(0,22):''}</p>
     </div>
     <div class="tx-right">
-      <p class="tx-amt">${fmtR(e.amount)}</p>
+      <p class="tx-amt" style="color:${e.type === 'income' ? '#5cdb95' : ''}">
+  ${e.type === 'income' ? '+' : '-'} ${fmtR(e.amount)}
+</p>
       <div class="tx-actions">
         <button class="icon-btn" onclick="openModal('${e.id}')"><i class="ti ti-pencil" style="font-size:12px"></i></button>
         <button class="icon-btn del" onclick="delExp('${e.id}')"><i class="ti ti-trash" style="font-size:12px"></i></button>
