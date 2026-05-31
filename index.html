@@ -1542,12 +1542,13 @@ input[type=date] { color-scheme: dark; }
     );
 }
 
- .ceo-only{
-  display:none;
+.ceo-only{
+  display:none !important;
 }
 
 body.ceo-mode .ceo-only{
-  display:block;
+  display:flex !important;
+  flex-direction:column;
 }
   
 </style>
