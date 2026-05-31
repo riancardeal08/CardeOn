@@ -2058,6 +2058,21 @@ input[type=date] { color-scheme: dark; }
     
 
     <div class="field">
+
+<div class="field">
+  <span class="field-label">Tipo</span>
+
+  <div class="pay-row">
+    <button type="button" class="payf-btn on" id="type-expense" onclick="setType('expense')">
+      Gasto
+    </button>
+
+    <button type="button" class="payf-btn" id="type-income" onclick="setType('income')">
+      Receita
+    </button>
+  </div>
+</div>
+      
       <span class="field-label">Pagamento <span class="field-opt">— opcional</span></span>
       <div class="pay-row" id="pay-grid"></div>
     </div>
@@ -2169,7 +2184,7 @@ let finance = {
   goal: 0
 }
   
-let exps = [], editId = null, selCat = '', selPay = '', fCat = ''
+let exps = [], editId = null, selCat = '', selPay = '', fCat = '', selType = 'expense'
   
 function load(){ try{exps=JSON.parse(localStorage.getItem(SK)||'[]')}catch{exps=[]} }
   function generateRecurring(){
@@ -2245,6 +2260,21 @@ function saveFinance(){
   
   function saveFinanceSettings(){
 
+function setType(type){
+
+  selType = type
+
+  document.getElementById('type-expense').classList.toggle(
+    'on',
+    type === 'expense'
+  )
+
+  document.getElementById('type-income').classList.toggle(
+    'on',
+    type === 'income'
+  )
+}
+  
   finance.available =
     Number(
       document.getElementById('cfg-available').value || 0
@@ -2627,7 +2657,7 @@ function saveExp(){
   
  const data={
 
-type:'expense',
+type:selType,
    
     amount:amt,
     category:selCat,
@@ -2659,11 +2689,19 @@ type:'expense',
  } else {
   exps.unshift({...data, id:crypto.randomUUID(), createdAt:new Date().toISOString()})
 
+  if(data.type === 'income'){
+
+  finance.available += Number(data.amount || 0)
+
+}else{
+
   if(data.paymentMethod === 'Crédito'){
     finance.creditLimit -= Number(data.amount || 0)
   }else{
     finance.available -= Number(data.amount || 0)
   }
+
+}
 
   saveFinance()
 
