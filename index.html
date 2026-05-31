@@ -3033,6 +3033,20 @@ const PWA = (() => {
 
 // Kick off PWA
 PWA.init();
+
+function applyCeoMode(on){
+
+  document.body.classList.toggle('ceo-mode', on)
+
+  const ceoStatus =
+    document.getElementById('ceo-status')
+
+  if(ceoStatus){
+    ceoStatus.style.display =
+      on ? 'block' : 'none'
+  }
+}
+  
 const ceoToggle =
   document.getElementById('ceo-toggle')
 
