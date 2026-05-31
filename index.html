@@ -3062,12 +3062,16 @@ document
   ceoToggle.addEventListener('change', () => {
 
     if(ceoToggle.checked){
-      
-      document
-  .getElementById('ceo-panel')
-  .style.display = 'block'
 
-      document.body.classList.add('ceo-mode')
+  document
+    .getElementById('ceo-panel')
+    .style.display = 'block'
+
+  document
+    .getElementById('ceo-status')
+    .style.display = 'block'
+
+  document.body.classList.add('ceo-mode')
 
       localStorage.setItem(
         'ceo-mode',
