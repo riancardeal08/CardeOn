@@ -2667,7 +2667,27 @@ function saveExp(){
   if(document.getElementById('pg-rep').classList.contains('active'))  rRep()
 }
 function delExp(id){
-  exps=exps.filter(e=>e.id!==id); persist(); toast('Gasto removido'); rDash()
+
+  const exp = exps.find(e => e.id === id)
+
+  if(exp){
+    if(exp.paymentMethod === 'Crédito'){
+      finance.creditLimit += Number(exp.amount || 0)
+    }else{
+      finance.available += Number(exp.amount || 0)
+    }
+
+    saveFinance()
+  }
+
+  exps = exps.filter(e => e.id !== id)
+
+  persist()
+
+  toast('Gasto removido')
+
+  rDash()
+
   if(document.getElementById('pg-hist').classList.contains('active')) rHist()
   if(document.getElementById('pg-rep').classList.contains('active'))  rRep()
 }
