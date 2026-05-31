@@ -1541,6 +1541,14 @@ input[type=date] { color-scheme: dark; }
       transparent 60%
     );
 }
+
+  .ceo-only{
+  display:none;
+}
+
+.ceo-mode .ceo-only{
+  display:block;
+}
   
 </style>
 </head>
@@ -1685,7 +1693,7 @@ input[type=date] { color-scheme: dark; }
     </div>
   </div>
 
- <div class="card card-p">
+ <div class="card card-p ceo-only">
   <div style="font-size:10px;color:var(--t3)">
     Crédito
   </div>
@@ -1707,7 +1715,7 @@ input[type=date] { color-scheme: dark; }
   </div>
 </div>
         
-  <div class="card card-p">
+  <div class="card card-p ceo-only">
     <div style="font-size:10px;color:var(--t3)">
       Total
     </div>
