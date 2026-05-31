@@ -2495,7 +2495,11 @@ function rHist(){
     <div>
       <div class="date-group-hd">
         <p>${fmtDs(dt)}</p>
-        <p>${fmtR(items.reduce((s,e)=>s+parseFloat(e.amount||0),0))}</p>
+        <p>${fmtR(items.reduce((s,e)=>{
+  return e.type === 'income'
+    ? s + parseFloat(e.amount || 0)
+    : s - parseFloat(e.amount || 0)
+},0))}</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px">${items.map(e=>txRow(e)).join('')}</div>
     </div>`).join('')
