@@ -1754,6 +1754,39 @@ input[type=date] { color-scheme: dark; }
       👑 CEO MODE ACTIVE
     </div>
 
+<div class="card card-p" style="min-width:160px">
+  <div style="font-size:10px;color:var(--t3)">
+    💰 Receitas do mês
+  </div>
+
+  <div id="month-income"
+       style="margin-top:6px;font-size:18px;font-weight:700;color:#5cdb95">
+    R$ 0,00
+  </div>
+</div>
+
+<div class="card card-p" style="min-width:160px">
+  <div style="font-size:10px;color:var(--t3)">
+    📉 Gastos do mês
+  </div>
+
+  <div id="month-expense"
+       style="margin-top:6px;font-size:18px;font-weight:700">
+    R$ 0,00
+  </div>
+</div>
+
+<div class="card card-p" style="min-width:160px">
+  <div style="font-size:10px;color:var(--t3)">
+    📈 Resultado do mês
+  </div>
+
+  <div id="month-result"
+       style="margin-top:6px;font-size:18px;font-weight:700">
+    R$ 0,00
+  </div>
+</div>
+    
 <div style="
   padding:10px 14px;
   border-radius:14px;
@@ -2350,6 +2383,16 @@ const totalBalance = available + credit
 
   const goal = Number(finance.goal || 0)
 
+const monthIncome = me
+  .filter(e => e.type === 'income')
+  .reduce((s,e)=>s+Number(e.amount||0),0)
+
+const monthExpense = me
+  .filter(e => e.type !== 'income')
+  .reduce((s,e)=>s+Number(e.amount||0),0)
+
+const monthResult = monthIncome - monthExpense
+  
 const goalProgress =
   goal > 0
     ? Math.min(
@@ -2400,6 +2443,24 @@ if(totalBalance < 0){
   totalEl.style.color = ''
 }
 
+document.getElementById('month-income').textContent =
+  fmtR(monthIncome)
+
+document.getElementById('month-expense').textContent =
+  fmtR(monthExpense)
+
+document.getElementById('month-result').textContent =
+  fmtR(monthResult)
+
+const resultEl =
+  document.getElementById('month-result')
+
+if(monthResult < 0){
+  resultEl.style.color = '#e05454'
+}else{
+  resultEl.style.color = '#5cdb95'
+}
+  
   const chip=document.getElementById('d-chip')
   if(me.length>0){
     chip.style.display='inline-flex'
