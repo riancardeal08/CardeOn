@@ -1874,12 +1874,24 @@ body.ceo-mode .ceo-only{
       <p class="sec-hd">
         <span>Categorias</span>
       </p>
-      <div class="cat-grid" id="d-cats"></div>
+     <div class="cat-grid" id="d-cats"></div>
 
-      <p class="sec-hd">
-        <span>Recentes</span>
-        <span class="sec-hd-link" onclick="goPage('hist')">Ver tudo</span>
-      </p>
+<div id="income-history-box" class="ceo-only" style="margin-bottom:24px">
+  <p class="sec-hd">
+    <span>Entradas</span>
+  </p>
+
+  <div id="d-incomes" style="
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  "></div>
+</div>
+
+<p class="sec-hd">
+  <span>Recentes</span>
+  <span class="sec-hd-link" onclick="goPage('hist')">Ver tudo</span>
+</p>
       <div id="d-recent" style="display:flex;flex-direction:column;gap:6px"></div>
     </div>
   </div>
