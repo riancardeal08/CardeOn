@@ -2764,6 +2764,44 @@ function openIncomeModal(){
     .classList.remove('open')
 
 }
+
+  function saveIncome(){
+
+  const amount =
+    parseFloat(
+      document.getElementById('income-val').value
+    )
+
+  const origin =
+    document.getElementById('income-origin').value.trim()
+
+  if(!amount || amount <= 0){
+    toast('Informe um valor válido')
+    return
+  }
+
+  finance.available += amount
+
+  exps.unshift({
+    id: crypto.randomUUID(),
+    type: 'income',
+    amount: amount,
+    category: 'entrada',
+    place: origin || 'Entrada',
+    note: '',
+    paymentMethod: 'Entrada',
+    date: tod(),
+    createdAt: new Date().toISOString()
+  })
+
+  saveFinance()
+  persist()
+
+  closeIncomeModal()
+  rDash()
+
+  toast('Entrada adicionada')
+}
   
 function openModal(id){
   editId=id; selCat=''; selPay=''
