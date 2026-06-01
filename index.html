@@ -1685,13 +1685,30 @@ body.ceo-mode .ceo-only{
       Disponível
     </div>
 
-    <div id="available-balance" style="
-      margin-top:6px;
-      font-size:14px;
-      font-weight:700;
-    ">
-      R$ 0,00
-    </div>
+   <div id="available-balance" style="
+  margin-top:6px;
+  font-size:14px;
+  font-weight:700;
+">
+  R$ 0,00
+</div>
+
+<button
+  onclick="openIncomeModal()"
+  style="
+    margin-top:10px;
+    width:100%;
+    border:none;
+    border-radius:10px;
+    padding:8px;
+    background:#5cdb95;
+    color:#050506;
+    font-weight:700;
+    cursor:pointer;
+  "
+>
+  + Entrada
+</button>
   </div>
 
  <div class="card card-p ceo-only">
@@ -2694,6 +2711,15 @@ function pickPay(p){
   if(btn){btn.style.background='var(--acc-dim)';btn.style.color='var(--acc-soft)';btn.style.borderColor='var(--acc-bd)'}
 }
 function overlayClick(e){ if(e.target===document.getElementById('modal-overlay')) closeModal() }
+
+function openIncomeModal(){
+
+  openModal(null)
+
+  document.getElementById('sh-title').textContent =
+    'Nova entrada'
+}
+  
 function openModal(id){
   editId=id; selCat=''; selPay=''
   buildCatGrid(); buildPayGrid()
