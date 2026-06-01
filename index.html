@@ -2732,23 +2732,95 @@ function rRep(){
     const k=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
     months[k]=(months[k]||0)+parseFloat(e.amount||0)
   })
-  const mArr=Object.entries(months).sort(([a],[b])=>a.localeCompare(b)).slice(-6)
-  const mMax=Math.max(...mArr.map(([,v])=>v),1)
-  document.getElementById('r-chart').innerHTML=mArr.map(([k,v],i)=>{
-    const pct=Math.max(4,Math.round((v/mMax)*100))
-    const [yr,mo]=k.split('-')
-    const lbl=new Date(+yr,+mo-1,1).toLocaleDateString('pt-BR',{month:'short'})
-    const isCur=i===mArr.length-1
-    // Premium bar — current month gets the accent, others get a refined gradient
-    const bg = isCur
-      ? 'linear-gradient(to top,#4bc47f,#5cdb95)'
-      : 'linear-gradient(to top,rgba(255,255,255,0.05),rgba(255,255,255,0.09))'
-    const sh = isCur ? 'box-shadow:0 0 10px rgba(92,219,149,0.18);' : ''
-    return `<div class="chart-col">
-      <div class="chart-col-bar" style="height:${pct}%;background:${bg};${sh}"></div>
-      <p class="chart-col-lbl">${lbl}</p>
-    </div>`
-  }).join('')
+  const monthIncome = me
+  .filter(e => e.type === 'income')
+  .reduce((s,e)=>s+Number(e.amount||0),0)
+
+const monthExpense = me
+  .filter(e => e.type !== 'income')
+  .reduce((s,e)=>s+Number(e.amount||0),0)
+
+const maxRG =
+  Math.max(monthIncome, monthExpense, 1)
+
+const incomePct =
+  Math.max(4, Math.round((monthIncome / maxRG) * 100))
+
+const expensePct =
+  Math.max(4, Math.round((monthExpense / maxRG) * 100))
+
+document.getElementById('r-chart').innerHTML = `
+  <div style="
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  ">
+
+    <div>
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        font-size:12px;
+        margin-bottom:6px;
+      ">
+        <span style="color:#5cdb95;font-weight:600">
+          Receitas
+        </span>
+
+        <span>
+          ${fmtR(monthIncome)}
+        </span>
+      </div>
+
+      <div style="
+        height:10px;
+        border-radius:999px;
+        background:rgba(255,255,255,.06);
+        overflow:hidden;
+      ">
+        <div style="
+          width:${incomePct}%;
+          height:100%;
+          border-radius:999px;
+          background:linear-gradient(90deg,#4bc47f,#5cdb95);
+        "></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        font-size:12px;
+        margin-bottom:6px;
+      ">
+        <span style="color:#e05454;font-weight:600">
+          Gastos
+        </span>
+
+        <span>
+          ${fmtR(monthExpense)}
+        </span>
+      </div>
+
+      <div style="
+        height:10px;
+        border-radius:999px;
+        background:rgba(255,255,255,.06);
+        overflow:hidden;
+      ">
+        <div style="
+          width:${expensePct}%;
+          height:100%;
+          border-radius:999px;
+          background:linear-gradient(90deg,#8b2f2f,#e05454);
+        "></div>
+      </div>
+    </div>
+
+  </div>
+`
 
   const me=meExps(), mt=meTotal()
   const ct={}
