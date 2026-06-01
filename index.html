@@ -2512,10 +2512,17 @@ if(incomeList){
           </div>
 
           <div class="tx-right">
-            <div class="tx-amt" style="color:#5cdb95">
-              + ${fmtR(e.amount)}
-            </div>
-          </div>
+  <div class="tx-amt" style="color:#5cdb95">
+    + ${fmtR(e.amount)}
+  </div>
+
+  <button
+    class="icon-btn del"
+    onclick="delExp('${e.id}')"
+  >
+    <i class="ti ti-trash"></i>
+  </button>
+</div>
         </div>
       `).join('')
 
