@@ -3156,6 +3156,12 @@ function applyCeoMode(on){
     ceoStatus.style.display =
       on ? 'block' : 'none'
   }
+
+  localStorage.setItem(
+    'ceo-mode',
+    on ? 'on' : 'off'
+  )
+
 }
   
 const ceoToggle =
