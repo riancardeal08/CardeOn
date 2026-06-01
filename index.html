@@ -93,6 +93,22 @@
   --ease-spr: cubic-bezier(0.34, 1.08, 0.64, 1);
 }
 
+  body.light-mode{
+
+  --bg:#f4f6fb;
+  --s1:#ffffff;
+  --s2:#f1f3f7;
+  --s3:#e8ebf0;
+  --s4:#dde1e8;
+  --s5:#d2d7e0;
+
+  --t1:#111827;
+  --t2:#4b5563;
+  --t3:#6b7280;
+  --t4:#9ca3af;
+
+}
+
 html, body {
   background: var(--bg);
   color: var(--t1);
@@ -2033,6 +2049,26 @@ body.ceo-mode .ceo-only{
         <span class="slider"></span>
       </label>
 
+<div style="height:18px"></div>
+
+<div class="field">
+  <span class="field-label">Aparência</span>
+
+  <div class="pay-row">
+    <button type="button" class="payf-btn" onclick="applyTheme('dark')">
+      🌙 Escuro
+    </button>
+
+    <button type="button" class="payf-btn" onclick="applyTheme('light')">
+      ☀️ Claro
+    </button>
+
+    <button type="button" class="payf-btn" onclick="applyTheme('auto')">
+      ⚙️ Auto
+    </button>
+  </div>
+</div>
+      
     </div>
 
     <div style="height:14px"></div>
@@ -3309,6 +3345,26 @@ function applyCeoMode(on){
     on ? 'on' : 'off'
   )
 
+}
+
+  function applyTheme(theme){
+
+  document.body.classList.remove(
+    'light-mode'
+  )
+
+  if(theme === 'light'){
+
+    document.body.classList.add(
+      'light-mode'
+    )
+
+  }
+
+  localStorage.setItem(
+    'theme',
+    theme
+  )
 }
   
 const ceoToggle =
