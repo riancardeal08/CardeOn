@@ -2458,10 +2458,7 @@ const totalBalance = available + credit
 
   const goal = Number(finance.goal || 0)
 
-const me = meExps()
-
 const monthIncome = me
-  
   .filter(e => e.type === 'income')
   .reduce((s,e)=>s+Number(e.amount||0),0)
 
