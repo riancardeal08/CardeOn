@@ -3287,6 +3287,18 @@ installBtn.addEventListener("click", async () => {
   }
 
 });
+
+const savedCeoMode =
+  localStorage.getItem('ceo-mode')
+
+if(savedCeoMode === 'on'){
+
+  document.getElementById('ceo-toggle').checked = true
+
+  applyCeoMode(true)
+
+}
+  
 </script>
 </body>
 </html>
