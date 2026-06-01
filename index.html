@@ -2467,6 +2467,61 @@ const monthExpense = me
   .reduce((s,e)=>s+Number(e.amount||0),0)
 
 const monthResult = monthIncome - monthExpense
+
+  const lastIncomes =
+  me
+    .filter(e => e.type === 'income')
+    .slice(0,3)
+
+const incomeList =
+  document.getElementById('d-incomes')
+
+if(incomeList){
+
+  if(lastIncomes.length === 0){
+
+    incomeList.innerHTML = `
+      <div class="card card-p" style="
+        font-size:12px;
+        color:var(--t3);
+      ">
+        Nenhuma entrada registrada este mês
+      </div>
+    `
+
+  }else{
+
+    incomeList.innerHTML =
+      lastIncomes.map(e => `
+        <div class="tx-row">
+          <div class="tx-ico" style="
+            background:rgba(92,219,149,.10);
+            color:#5cdb95;
+          ">
+            <i class="ti ti-arrow-up"></i>
+          </div>
+
+          <div class="tx-info">
+            <div class="tx-name">
+              ${e.place || 'Entrada'}
+            </div>
+
+            <div class="tx-meta">
+              ${new Date(e.date + 'T12:00:00').toLocaleDateString('pt-BR')}
+            </div>
+          </div>
+
+          <div class="tx-right">
+            <div class="tx-amt" style="color:#5cdb95">
+              + ${fmtR(e.amount)}
+            </div>
+          </div>
+        </div>
+      `).join('')
+
+  }
+
+}
   
 const goalProgress =
   goal > 0
