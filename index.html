@@ -2725,7 +2725,9 @@ function rRep(){
   document.getElementById('r-empty').style.display=empty?'flex':'none'
   document.getElementById('r-body').style.display=empty?'none':'block'
   if(empty) return
-
+  
+const me = meExps()
+const mt = meTotal()
   const months={}
   exps.forEach(e=>{
     const d=new Date(e.date+'T12:00:00')
@@ -2822,7 +2824,6 @@ document.getElementById('r-chart').innerHTML = `
   </div>
 `
 
-  const me=meExps(), mt=meTotal()
   const ct={}
   me.forEach(e=>{ ct[e.category]=(ct[e.category]||0)+parseFloat(e.amount||0) })
   document.getElementById('r-cats').innerHTML=Object.entries(ct).sort(([,a],[,b])=>b-a).map(([id,v])=>{
