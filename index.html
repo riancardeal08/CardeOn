@@ -2088,43 +2088,6 @@ body.ceo-mode .ceo-only{
       <button class="close-btn" onclick="closeModal()"><i class="ti ti-x"></i></button>
     </div>
 
-    <div id="income-overlay" class="modal-overlay">
-  <div class="sheet">
-
-    <div class="handle"><span></span></div>
-
-    <div class="sheet-hd">
-      <p class="sheet-title">Nova entrada</p>
-
-      <button class="close-btn" onclick="closeIncomeModal()">
-        <i class="ti ti-x"></i>
-      </button>
-    </div>
-
-    <div class="field">
-      <span class="field-label">Valor</span>
-
-      <div class="input-wrap">
-        <span class="input-curr">R$</span>
-        <input type="number" id="income-val" class="input-big" placeholder="0,00">
-      </div>
-    </div>
-
-    <div class="field">
-      <span class="field-label">Origem</span>
-
-      <div class="input-wrap">
-        <input type="text" id="income-origin" placeholder="Ex: Salário, Pix, Venda">
-      </div>
-    </div>
-
-    <button class="save-btn" onclick="saveIncome()">
-      Salvar entrada
-    </button>
-
-  </div>
-</div>
-
     <div class="field">
       <span class="field-label">Valor</span>
       <div class="input-wrap">
@@ -2253,6 +2216,43 @@ body.ceo-mode .ceo-only{
   </div>
 </div>
 
+<div id="income-overlay" class="modal-overlay">
+  <div class="sheet">
+
+    <div class="handle"><span></span></div>
+
+    <div class="sheet-hd">
+      <p class="sheet-title">Nova entrada</p>
+
+      <button class="close-btn" onclick="closeIncomeModal()">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+
+    <div class="field">
+      <span class="field-label">Valor</span>
+
+      <div class="input-wrap">
+        <span class="input-curr">R$</span>
+        <input type="number" id="income-val" class="input-big" placeholder="0,00">
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="field-label">Origem</span>
+
+      <div class="input-wrap">
+        <input type="text" id="income-origin" placeholder="Ex: Salário, Pix, Venda">
+      </div>
+    </div>
+
+    <button class="save-btn" onclick="saveIncome()">
+      Salvar entrada
+    </button>
+
+  </div>
+</div>
+    
 <script>
 // ── Data ──
 const CATS = [
