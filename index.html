@@ -3501,6 +3501,11 @@ if(savedCeoMode === 'on'){
   applyCeoMode(true)
 
 }
+
+const savedTheme =
+  localStorage.getItem('theme') || 'dark'
+
+applyTheme(savedTheme)
   
 </script>
 </body>
