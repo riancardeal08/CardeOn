@@ -2055,15 +2055,15 @@ body.ceo-mode .ceo-only{
   <span class="field-label">Aparência</span>
 
   <div class="pay-row">
-    <button type="button" class="payf-btn" onclick="applyTheme('dark')">
+    <button type=id="theme-dark" "button" class="payf-btn" onclick="applyTheme('dark')">
       🌙 Escuro
     </button>
 
-    <button type="button" class="payf-btn" onclick="applyTheme('light')">
+    <button type="theme-light" "button" class="payf-btn" onclick="applyTheme('light')">
       ☀️ Claro
     </button>
 
-    <button type="button" class="payf-btn" onclick="applyTheme('auto')">
+    <button type="theme-auto" "button" class="payf-btn" onclick="applyTheme('auto')">
       ⚙️ Auto
     </button>
   </div>
@@ -3353,6 +3353,18 @@ function applyCeoMode(on){
     'light-mode'
   )
 
+  document
+  .getElementById('theme-dark')
+  ?.classList.remove('on')
+
+document
+  .getElementById('theme-light')
+  ?.classList.remove('on')
+
+document
+  .getElementById('theme-auto')
+  ?.classList.remove('on')
+
   let finalTheme = theme
 
   if(theme === 'auto'){
@@ -3371,6 +3383,10 @@ function applyCeoMode(on){
 
   }
 
+document
+  .getElementById('theme-' + theme)
+  ?.classList.add('on')
+  
   localStorage.setItem(
     'theme',
     theme
