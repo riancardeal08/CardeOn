@@ -2165,20 +2165,6 @@ body.ceo-mode .ceo-only{
     
 
     <div class="field">
-
-<div class="field">
-  <span class="field-label">Tipo</span>
-
-  <div class="pay-row">
-    <button type="button" class="payf-btn on" id="type-expense" onclick="setType('expense')">
-      Gasto
-    </button>
-
-    <button type="button" class="payf-btn" id="type-income" onclick="setType('income')">
-      Receita
-    </button>
-  </div>
-</div>
       
       <span class="field-label">Pagamento <span class="field-opt">— opcional</span></span>
       <div class="pay-row" id="pay-grid"></div>
@@ -2404,21 +2390,6 @@ function saveFinance(){
   
   function saveFinanceSettings(){
 
-function setType(type){
-
-  selType = type
-
-  document.getElementById('type-expense').classList.toggle(
-    'on',
-    type === 'expense'
-  )
-
-  document.getElementById('type-income').classList.toggle(
-    'on',
-    type === 'income'
-  )
-}
-  
   finance.available =
     Number(
       document.getElementById('cfg-available').value || 0
