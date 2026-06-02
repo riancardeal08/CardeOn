@@ -1425,7 +1425,10 @@ input[type=date] { color-scheme: dark; }
 .switch{
   position:relative;
   width:52px;
+  min-width:52px;
   height:30px;
+  display:inline-block;
+  flex-shrink:0;
 }
 
 .switch input{
@@ -1435,6 +1438,7 @@ input[type=date] { color-scheme: dark; }
 .slider{
   position:absolute;
   inset:0;
+  display:block;
 
   background:#222;
   border-radius:999px;
