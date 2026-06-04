@@ -3487,6 +3487,50 @@ function openVaultModal(){
   document.getElementById('vault-modal').classList.add('open')
 }
 
+function openVaultWithdrawModal(){
+  document.getElementById('vault-withdraw-amount').value = ''
+  document.getElementById('vault-withdraw-modal').classList.add('open')
+}
+
+function closeVaultWithdrawModal(){
+  document.getElementById('vault-withdraw-modal').classList.remove('open')
+}
+
+function withdrawFromVault(){
+
+  const amount = Number(
+    document.getElementById('vault-withdraw-amount').value || 0
+  )
+
+  const vault = Number(finance.vault || 0)
+
+  if(amount <= 0){
+    toast('Informe um valor válido')
+    return
+  }
+
+  if(amount > vault){
+    toast('Valor maior que o saldo do cofre')
+    return
+  }
+
+  finance.vault = vault - amount
+  finance.available =
+    Number(finance.available || 0) + amount
+
+  localStorage.setItem(
+    'finance',
+    JSON.stringify(finance)
+  )
+
+  closeVaultWithdrawModal()
+
+  rDash()
+  rConfig()
+
+  toast('Valor retirado do cofre')
+}
+  
 function closeVaultModal(){
   document.getElementById('vault-modal').classList.remove('open')
 }
