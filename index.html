@@ -1717,6 +1717,20 @@ body.ceo-mode .ceo-only{
     Crédito
   </div>
 
+   <div class="card card-p ceo-only">
+  <div style="font-size:10px;color:var(--t3)">
+    Cofre
+  </div>
+
+  <div id="vault-balance" style="
+    margin-top:6px;
+    font-size:14px;
+    font-weight:700;
+  ">
+    R$ 0,00
+  </div>
+</div>
+
   <div id="credit-balance" style="
     margin-top:6px;
     font-size:14px;
@@ -2089,6 +2103,20 @@ body.ceo-mode .ceo-only{
 </div>
 
 <div class="field ceo-only">
+  <span class="field-label">Cofre</span>
+
+  <div class="input-wrap">
+    <span class="input-curr">R$</span>
+
+    <input
+      type="number"
+      id="cfg-vault"
+      placeholder="0,00"
+    >
+  </div>
+</div>
+    
+<div class="field ceo-only">
   <span class="field-label">Meta Financeira</span>
 
   <div class="input-wrap">
@@ -2384,6 +2412,9 @@ finance.creditTotal =
   Number(document.getElementById('cfg-credit-total').value || 0)
     
   finance.creditLimit =
+    finance.vault =
+  Number(document.getElementById('cfg-vault').value || 0)
+    
     Number(
       document.getElementById('cfg-credit').value || 0
     )
@@ -2445,8 +2476,9 @@ function rDash(){
   const available = Number(finance.available || 0)
 const credit = Number(finance.creditLimit || 0)
 const creditTotal = Number(finance.creditTotal || 0)
+  const vault = Number(finance.vault || 0)
 const creditUsed = creditTotal - credit
-const totalBalance = available + credit
+const totalBalance = available + credit + vault
 
   const goal = Number(finance.goal || 0)
 
@@ -2542,6 +2574,8 @@ if(available < 0){
 }
   
 document.getElementById('credit-balance').textContent = fmtR(credit)
+
+  document.getElementById('vault-balance').textContent = fmtR(vault)
 
 document.getElementById('credit-used').textContent =
   'Usado: ' + fmtR(creditUsed)
