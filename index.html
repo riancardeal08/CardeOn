@@ -3507,7 +3507,28 @@ function openVaultModal(){
 }
 
 function withdrawFromVault(){
-  alert('Função conectada')
+  const amount = Number(document.getElementById('vault-withdraw-amount').value || 0)
+  const vault = Number(finance.vault || 0)
+
+  if(amount <= 0){
+    toast('Informe um valor válido')
+    return
+  }
+
+  if(amount > vault){
+    toast('Valor maior que o cofre')
+    return
+  }
+
+  finance.vault = vault - amount
+  finance.available = Number(finance.available || 0) + amount
+
+  localStorage.setItem('finance', JSON.stringify(finance))
+
+  closeVaultWithdrawModal()
+  rDash()
+  rConfig()
+  toast('Valor retirado do cofre')
 }
   
 function closeVaultModal(){
