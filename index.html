@@ -3452,10 +3452,19 @@ function closeVaultModal(){
 
 function saveToVault(){
   const amount = Number(document.getElementById('vault-amount').value || 0)
+  const available = Number(finance.available || 0)
 
-  if(amount <= 0) return
+  if(amount <= 0){
+    toast('Informe um valor válido')
+    return
+  }
 
-  finance.available = Number(finance.available || 0) - amount
+  if(amount > available){
+    toast('Saldo disponível insuficiente')
+    return
+  }
+
+  finance.available = available - amount
   finance.vault = Number(finance.vault || 0) + amount
 
   localStorage.setItem('finance', JSON.stringify(finance))
@@ -3463,6 +3472,18 @@ function saveToVault(){
   closeVaultModal()
   rDash()
   rConfig()
+  toast('Valor guardado no cofre')
+}
+
+  finance.available = available - amount
+  finance.vault = Number(finance.vault || 0) + amount
+
+  localStorage.setItem('finance', JSON.stringify(finance))
+
+  closeVaultModal()
+  rDash()
+  rConfig()
+  toast('Valor guardado no cofre')
 }
   
 </script>
