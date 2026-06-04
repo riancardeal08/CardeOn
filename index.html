@@ -2133,9 +2133,9 @@ body.ceo-mode .ceo-only{
       </div>
     </div>
 
-    <button class="save-btn" onclick="withdrawFromVault()">
-      Retirar valor
-    </button>
+   <button class="save-btn" onclick="saveToVault()">
+  Guardar valor
+</button>
   </div>
 </div>
 
@@ -3467,28 +3467,6 @@ document
 function openVaultModal(){
   document.getElementById('vault-amount').value = ''
   document.getElementById('vault-modal').classList.add('open')
-}
-
-  if(amount > vault){
-    toast('Valor maior que o saldo do cofre')
-    return
-  }
-
-  finance.vault = vault - amount
-  finance.available =
-    Number(finance.available || 0) + amount
-
-  localStorage.setItem(
-    'finance',
-    JSON.stringify(finance)
-  )
-
-  closeVaultWithdrawModal()
-
-  rDash()
-  rConfig()
-
-  toast('Valor retirado do cofre')
 }
   
 function closeVaultModal(){
