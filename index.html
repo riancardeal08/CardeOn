@@ -2167,42 +2167,6 @@ body.ceo-mode .ceo-only{
     </button>
   </div>
 </div>
-
-  <div id="vault-withdraw-modal" class="modal-overlay" onclick="closeVaultWithdrawModal()">
-  <div class="sheet" onclick="event.stopPropagation()">
-    <div class="handle"><span></span></div>
-
-    <div class="sheet-hd">
-      <p class="sheet-title">Retirar do cofre</p>
-
-      <button class="close-btn" onclick="closeVaultWithdrawModal()">
-        <i class="ti ti-x"></i>
-      </button>
-    </div>
-
-    <div class="field">
-      <span class="field-label">Valor</span>
-
-      <div class="input-wrap">
-        <span class="input-curr">R$</span>
-
-        <input
-          type="number"
-          id="vault-withdraw-amount"
-          class="input-big"
-          placeholder="0,00"
-          step="0.01"
-          min="0"
-        >
-      </div>
-    </div>
-
-    <button class="save-btn" onclick="withdrawFromVault()">
-      Retirar valor
-    </button>
-
-  </div>
-</div>
   
   <div id="modal-overlay" class="modal-overlay" onclick="overlayClick(event)">
   <div class="sheet" id="sheet-el">
@@ -3512,28 +3476,6 @@ function openVaultModal(){
   document.getElementById('vault-modal').classList.add('open')
 }
 
-function openVaultWithdrawModal(){
-  document.getElementById('vault-withdraw-amount').value = ''
-  document.getElementById('vault-withdraw-modal').classList.add('open')
-}
-
-function closeVaultWithdrawModal(){
-  document.getElementById('vault-withdraw-modal').classList.remove('open')
-}
-
-function withdrawFromVault(){
-
-  const amount = Number(
-    document.getElementById('vault-withdraw-amount').value || 0
-  )
-
-  const vault = Number(finance.vault || 0)
-
-  if(amount <= 0){
-    toast('Informe um valor válido')
-    return
-  }
-
   if(amount > vault){
     toast('Valor maior que o saldo do cofre')
     return
@@ -3568,50 +3510,6 @@ function saveToVault(){
     toast('Informe um valor válido')
     return
   }
-
-  function openVaultWithdrawModal(){
-  document.getElementById('vault-withdraw-amount').value = ''
-  document.getElementById('vault-withdraw-modal').classList.add('open')
-}
-
-function closeVaultWithdrawModal(){
-  document.getElementById('vault-withdraw-modal').classList.remove('open')
-}
-
-function withdrawFromVault(){
-
-  const amount = Number(
-    document.getElementById('vault-withdraw-amount').value || 0
-  )
-
-  const vault = Number(finance.vault || 0)
-
-  if(amount <= 0){
-    toast('Informe um valor válido')
-    return
-  }
-
-  if(amount > vault){
-    toast('Valor maior que o saldo do cofre')
-    return
-  }
-
-  finance.vault = vault - amount
-  finance.available =
-    Number(finance.available || 0) + amount
-
-  localStorage.setItem(
-    'finance',
-    JSON.stringify(finance)
-  )
-
-  closeVaultWithdrawModal()
-
-  rDash()
-  rConfig()
-
-  toast('Valor retirado do cofre')
-}
 
   if(amount > available){
     toast('Saldo disponível insuficiente')
