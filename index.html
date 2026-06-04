@@ -1717,6 +1717,14 @@ body.ceo-mode .ceo-only{
     ">
       + Guardar
     </button>
+
+<button onclick="openVaultWithdrawModal()" style="
+  margin-top:8px;width:100%;border:none;border-radius:10px;padding:8px;
+  background:rgba(255,255,255,.06);color:var(--t2);font-weight:700;cursor:pointer;
+">
+  - Retirar
+</button>
+    
   </div>
 
   <div class="card card-p ceo-only">
@@ -2115,6 +2123,39 @@ body.ceo-mode .ceo-only{
         <i class="ti ti-x"></i>
       </button>
     </div>
+
+    <div id="vault-withdraw-modal" class="modal-overlay" onclick="closeVaultWithdrawModal()">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="handle"><span></span></div>
+
+    <div class="sheet-hd">
+      <p class="sheet-title">Retirar do cofre</p>
+      <button class="close-btn" onclick="closeVaultWithdrawModal()">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+
+    <div class="field">
+      <span class="field-label">Valor</span>
+
+      <div class="input-wrap">
+        <span class="input-curr">R$</span>
+        <input
+          type="number"
+          id="vault-withdraw-amount"
+          class="input-big"
+          placeholder="0,00"
+          step="0.01"
+          min="0"
+        >
+      </div>
+    </div>
+
+    <button class="save-btn" onclick="withdrawFromVault()">
+      Retirar valor
+    </button>
+  </div>
+</div>
 
     <div class="field">
       <span class="field-label">Valor</span>
