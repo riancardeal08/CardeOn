@@ -2152,6 +2152,43 @@ body.ceo-mode .ceo-only{
 </button>
   </div>
 </div>
+
+<div id="vault-withdraw-modal" class="modal-overlay" onclick="closeVaultWithdrawModal()">
+  <div class="sheet" onclick="event.stopPropagation()">
+
+    <div class="handle"><span></span></div>
+
+    <div class="sheet-hd">
+      <p class="sheet-title">Retirar do cofre</p>
+
+      <button class="close-btn" onclick="closeVaultWithdrawModal()">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+
+    <div class="field">
+      <span class="field-label">Valor</span>
+
+      <div class="input-wrap">
+        <span class="input-curr">R$</span>
+
+        <input
+          type="number"
+          id="vault-withdraw-amount"
+          class="input-big"
+          placeholder="0,00"
+          step="0.01"
+          min="0"
+        >
+      </div>
+    </div>
+
+    <button class="save-btn">
+      Retirar valor
+    </button>
+
+  </div>
+</div>
   
   <div id="modal-overlay" class="modal-overlay" onclick="overlayClick(event)">
   <div class="sheet" id="sheet-el">
@@ -3461,8 +3498,12 @@ function openVaultModal(){
   document.getElementById('vault-modal').classList.add('open')
 }
 
-  function openVaultWithdrawModal(){
-  alert('Modal de retirada será criado agora')
+ function openVaultWithdrawModal(){
+  document.getElementById('vault-withdraw-modal').classList.add('open')
+}
+
+  function closeVaultWithdrawModal(){
+  document.getElementById('vault-withdraw-modal').classList.remove('open')
 }
   
 function closeVaultModal(){
