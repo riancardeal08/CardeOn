@@ -1723,6 +1723,24 @@ body.ceo-mode .ceo-only{
   </div>
 
   <div id="vault-balance" style="
+    
+    <button
+  onclick="openVaultModal()"
+  style="
+    margin-top:10px;
+    width:100%;
+    border:none;
+    border-radius:10px;
+    padding:8px;
+    background:rgba(92,219,149,.14);
+    color:#5cdb95;
+    font-weight:700;
+    cursor:pointer;
+  "
+>
+  + Guardar
+</button>
+    
     margin-top:6px;
     font-size:14px;
     font-weight:700;
@@ -2141,7 +2159,40 @@ body.ceo-mode .ceo-only{
 </div>
 
 <!-- ─── BOTTOM SHEET ─── -->
-<div id="modal-overlay" class="modal-overlay" onclick="overlayClick(event)">
+<div id="vault-modal" class="modal-overlay" onclick="closeVaultModal()">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="handle"><span></span></div>
+
+    <div class="sheet-hd">
+      <p class="sheet-title">Guardar no cofre</p>
+      <button class="close-btn" onclick="closeVaultModal()">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+
+    <div class="field">
+      <span class="field-label">Valor</span>
+
+      <div class="input-wrap">
+        <span class="input-curr">R$</span>
+        <input
+          type="number"
+          id="vault-amount"
+          class="input-big"
+          placeholder="0,00"
+          step="0.01"
+          min="0"
+        >
+      </div>
+    </div>
+
+    <button class="save-btn" onclick="saveToVault()">
+      Guardar valor
+    </button>
+  </div>
+</div>
+  
+  <div id="modal-overlay" class="modal-overlay" onclick="overlayClick(event)">
   <div class="sheet" id="sheet-el">
     <div class="handle"><span></span></div>
     <div class="sheet-hd">
@@ -3442,6 +3493,30 @@ document
 
   })
 
+}
+
+function openVaultModal(){
+  document.getElementById('vault-amount').value = ''
+  document.getElementById('vault-modal').classList.add('open')
+}
+
+function closeVaultModal(){
+  document.getElementById('vault-modal').classList.remove('open')
+}
+
+function saveToVault(){
+  const amount = Number(document.getElementById('vault-amount').value || 0)
+
+  if(amount <= 0) return
+
+  finance.available = Number(finance.available || 0) - amount
+  finance.vault = Number(finance.vault || 0) + amount
+
+  localStorage.setItem('finance', JSON.stringify(finance))
+
+  closeVaultModal()
+  rDash()
+  rConfig()
 }
   
 </script>
