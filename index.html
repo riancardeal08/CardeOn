@@ -2183,7 +2183,7 @@ body.ceo-mode .ceo-only{
       </div>
     </div>
 
-    <button class="save-btn" onclick="alert('Retirada funcionando')">
+    <button class="save-btn" onclick="withdrawFromVault()">
   Retirar valor
 </button>
 
@@ -3504,6 +3504,10 @@ function openVaultModal(){
 
   function closeVaultWithdrawModal(){
   document.getElementById('vault-withdraw-modal').classList.remove('open')
+}
+
+function withdrawFromVault(){
+  alert('Função conectada')
 }
   
 function closeVaultModal(){
