@@ -3474,17 +3474,6 @@ function saveToVault(){
   rConfig()
   toast('Valor guardado no cofre')
 }
-
-  finance.available = available - amount
-  finance.vault = Number(finance.vault || 0) + amount
-
-  localStorage.setItem('finance', JSON.stringify(finance))
-
-  closeVaultModal()
-  rDash()
-  rConfig()
-  toast('Valor guardado no cofre')
-}
   
 </script>
 <link rel="manifest" href="manifest.json">
