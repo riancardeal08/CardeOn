@@ -3680,6 +3680,16 @@ const savedTheme =
   localStorage.getItem('theme') || 'dark'
 
 applyTheme(savedTheme)
+
+  const savedPlan = localStorage.getItem('plan')
+
+if(savedPlan === 'ceo'){
+  const currentPlan = document.getElementById('current-plan')
+
+  if(currentPlan){
+    currentPlan.textContent = 'CEO'
+  }
+}
   
 </script>
 </body>
