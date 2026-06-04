@@ -1718,7 +1718,7 @@ body.ceo-mode .ceo-only{
       + Guardar
     </button>
 
-<button onclick="alert('Retirar em desenvolvimento')" style="
+<button onclick="openVaultWithdrawModal()" style="
   margin-top:8px;
   width:100%;
   border:none;
@@ -3459,6 +3459,10 @@ document
 function openVaultModal(){
   document.getElementById('vault-amount').value = ''
   document.getElementById('vault-modal').classList.add('open')
+}
+
+  function openVaultWithdrawModal(){
+  alert('Modal de retirada será criado agora')
 }
   
 function closeVaultModal(){
