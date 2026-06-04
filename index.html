@@ -3601,6 +3601,10 @@ function activateCEOPlan(){
   document.getElementById('current-plan').textContent = 'CEO'
   toast('Plano CEO ativado')
 }
+
+  function isCEOPlan(){
+  return localStorage.getItem('plan') === 'ceo'
+}
   
 </script>
 <link rel="manifest" href="manifest.json">
