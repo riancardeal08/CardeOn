@@ -1949,7 +1949,7 @@ body.ceo-mode .ceo-only{
       <p class="empty-body">Adicione gastos para visualizar seus relatórios.</p>
     </div>
 
-    <div id="r-body" style="display:none" class="px">
+    <div id="r-body" style="display:none" class="px premium-reports">
       <div class="card card-p" style="margin-bottom:8px">
         <p class="sec-hd" style="margin-bottom:16px"><span>Receitas x Gastos</span></p>
         <div class="chart-cols" id="r-chart"></div>
@@ -3668,6 +3668,13 @@ const reportsLocked =
 if(reportsLocked){
   reportsLocked.style.display = 'none'
 }
+
+  const reportsBody =
+  document.getElementById('r-body')
+
+if(reportsBody){
+  reportsBody.style.display = 'block'
+}
   
   toast('Plano CEO ativado')
 }
@@ -3691,6 +3698,20 @@ if(reportsLocked){
 const ceoToggle = document.getElementById('ceo-toggle')
 if(ceoToggle){
   ceoToggle.checked = false
+}
+
+    const reportsLocked =
+  document.getElementById('reports-locked')
+
+if(reportsLocked){
+  reportsLocked.style.display = 'block'
+}
+
+const reportsBody =
+  document.getElementById('r-body')
+
+if(reportsBody){
+  reportsBody.style.display = 'none'
 }
 
   toast('Plano Grátis ativado')
