@@ -1615,13 +1615,15 @@ body.ceo-mode .ceo-only{
 /* TEMA PORSCHE */
 
 .theme-porsche{
-  --bg:#030303;
-  --s1:#0b0b0c;
-  --s2:#121214;
-  --s3:#1b1a18;
+  --bg:#080706;
+
+  --s1:#11100f;
+  --s2:#181614;
+  --s3:#211d19;
 
   --acc:#d6b16a;
   --acc-soft:#f0c879;
+
   --acc-bd:rgba(240,200,121,.28);
 }
 
@@ -1669,7 +1671,19 @@ backdrop-filter:blur(20px);
 }
 
 .theme-porsche .nav-inner{
-  border-color:rgba(240,200,121,.16);
+  background:
+    rgba(10,8,6,.82);
+
+  border-color:
+    rgba(240,200,121,.18);
+
+  box-shadow:
+    0 12px 38px rgba(0,0,0,.55),
+    0 0 22px rgba(240,200,121,.08);
+
+  backdrop-filter:
+    blur(28px)
+    saturate(180%);
 }
 
 .theme-porsche .save-btn{
@@ -1699,14 +1713,33 @@ backdrop-filter:blur(20px);
 }
 
 .theme-porsche::before{
+
   content:'';
+
   position:fixed;
-  inset:-40%;
+  inset:0;
+
   pointer-events:none;
+
   background:
-    radial-gradient(circle at 20% 20%, rgba(240,200,121,.10), transparent 30%),
-    radial-gradient(circle at 80% 10%, rgba(255,255,255,.04), transparent 25%);
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(240,200,121,.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(255,255,255,.03),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(240,200,121,.05),
+      transparent 35%
+    );
+
   animation:porscheGlow 5s ease-in-out infinite alternate;
+
   z-index:0;
 }
 
