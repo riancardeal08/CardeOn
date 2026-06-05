@@ -3643,6 +3643,13 @@ function activateCEOPlan(){
 
   document.getElementById('ceo-plan-btn').textContent = 'Fazer Upgrade para CEO'
 
+    applyCeoMode(false)
+
+const ceoToggle = document.getElementById('ceo-toggle')
+if(ceoToggle){
+  ceoToggle.checked = false
+}
+
   toast('Plano Grátis ativado')
 }
 
