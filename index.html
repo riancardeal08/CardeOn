@@ -1611,6 +1611,23 @@ body.ceo-mode .ceo-only{
   color:#4f8cff;
 
 }
+
+  <div class="card card-p" style="margin-top:12px">
+  <p style="font-weight:700">
+    🏎️ Porsche Edition
+  </p>
+
+  <p style="font-size:12px;color:var(--t3);margin-top:6px">
+    Preto fosco, champagne e luxo silencioso.
+  </p>
+
+  <button
+    class="save-btn"
+    style="margin-top:12px"
+    onclick="applyThemePack('porsche')">
+    Aplicar
+  </button>
+</div>
   
 </style>
 </head>
@@ -3808,9 +3825,10 @@ if(reportsBody){
 function applyThemePack(theme){
 
   document.body.classList.remove(
-    'theme-gold',
-    'theme-blue'
-  )
+  'theme-gold',
+  'theme-blue',
+  'theme-porsche'
+)
 
   if(theme === 'gold'){
     document.body.classList.add('theme-gold')
@@ -3826,6 +3844,13 @@ function applyThemePack(theme){
     return
   }
 
+if(theme === 'porsche'){
+  document.body.classList.add('theme-porsche')
+  localStorage.setItem('theme-pack', 'porsche')
+  toast('Tema Porsche aplicado')
+  return
+}
+  
   localStorage.setItem('theme-pack', 'dark')
   toast('Tema padrão aplicado')
 }
