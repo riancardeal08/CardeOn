@@ -3597,6 +3597,9 @@ function saveToVault(){
 function activateCEOPlan(){
   localStorage.setItem('plan', 'ceo')
   document.getElementById('current-plan').textContent = 'CEO'
+
+  console.log(isCEOPlan())
+  
   toast('Plano CEO ativado')
 }
 
