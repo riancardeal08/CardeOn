@@ -2566,11 +2566,10 @@ function goPage(p){
   if(p==='rep')  rRep()
 }
 
-    function openPremiumPage(page){
+   function openPremiumPage(page){
 
   if(!isCEOPlan()){
-    toast('Disponível apenas no Plano CEO')
-    goPage('plans')
+    toast('🔒 Recurso exclusivo do Plano CEO')
     return
   }
 
