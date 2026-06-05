@@ -1922,7 +1922,7 @@ body.ceo-mode .ceo-only{
   <!-- ─── REPORTS ─── -->
   <div id="pg-rep" class="page">
 
-<div id="reports-locked" class="card card-p" style="margin:20px">
+<div id="reports-locked" class="card card-p" style="margin:20px;display:none">
 
   <div style="font-size:48px;text-align:center">
     🔒
@@ -3786,7 +3786,25 @@ const planBtn = document.getElementById('ceo-plan-btn')
 if(planBtn){
   planBtn.textContent = 'Plano Ativo'
 }
+
+  const reportsLocked =
+  document.getElementById('reports-locked')
+
+if(reportsLocked){
+  reportsLocked.style.display = 'none'
+}
   
+}
+
+  else{
+
+  const reportsLocked =
+    document.getElementById('reports-locked')
+
+  if(reportsLocked){
+    reportsLocked.style.display = 'block'
+  }
+
 }
   
 </script>
