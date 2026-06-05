@@ -3640,11 +3640,15 @@ if(isCEOPlan()){
 
   function activateFreePlan(){
 
+    if(!isCEOPlan()){
+  return
+}
+
   localStorage.setItem('plan', 'free')
 
   document.getElementById('current-plan').textContent = 'Grátis'
 
-  document.getElementById('free-plan-btn').textContent = 'Plano Atual'
+  document.getElementById('free-plan-btn').textContent = 'Plano Grátis'
 
   document.getElementById('ceo-plan-btn').textContent = 'Fazer Upgrade para CEO'
 
