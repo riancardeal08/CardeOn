@@ -3405,6 +3405,15 @@ PWA.init();
 
 function applyCeoMode(on){
 
+  if(on && !isCEOPlan()){
+
+    toast('Assine o Plano CEO')
+
+    document.getElementById('ceo-toggle').checked = false
+
+    return
+  }
+
   document.body.classList.toggle('ceo-mode', on)
 
   const ceoStatus =
