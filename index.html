@@ -2009,9 +2009,12 @@ body.ceo-mode .ceo-only{
     Controle básico de gastos, histórico e dashboard principal.
   </p>
 
-  <button id="free-plan-btn" class="save-btn" style="margin-top:16px;background:var(--s3);color:var(--t1)">
-    Plano Atual
-  </button>
+  <button id="free-plan-btn"
+        class="save-btn"
+        style="margin-top:16px;background:var(--s3);color:var(--t1)"
+        onclick="activateFreePlan()">
+  Plano Atual
+</button>
 </div>
     
     <div class="card card-p" style="margin-top:12px;border-color:var(--acc-bd)">
@@ -3628,6 +3631,19 @@ function activateCEOPlan(){
   console.log(isCEOPlan())
   
   toast('Plano CEO ativado')
+}
+
+  function activateFreePlan(){
+
+  localStorage.setItem('plan', 'free')
+
+  document.getElementById('current-plan').textContent = 'Grátis'
+
+  document.getElementById('free-plan-btn').textContent = 'Plano Atual'
+
+  document.getElementById('ceo-plan-btn').textContent = 'Fazer Upgrade para CEO'
+
+  toast('Plano Grátis ativado')
 }
 
   function isCEOPlan(){
