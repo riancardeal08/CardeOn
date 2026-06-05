@@ -2008,7 +2008,7 @@ body.ceo-mode .ceo-only{
         Desbloqueia Cofre, Crédito, Relatórios avançados e Modo CEO.
       </p>
 
-   <button class="save-btn" style="margin-top:16px" onclick="activateCEOPlan()">
+   <button id="ceo-plan-btn" class="save-btn" style="margin-top:16px" onclick="activateCEOPlan()">
   Fazer Upgrade para CEO
 </button>
     </div>
@@ -3607,6 +3607,8 @@ function activateCEOPlan(){
   localStorage.setItem('plan', 'ceo')
   document.getElementById('current-plan').textContent = 'CEO'
 
+  document.getElementById('ceo-plan-btn').textContent = 'Plano Ativo'
+
   console.log(isCEOPlan())
   
   toast('Plano CEO ativado')
@@ -3703,6 +3705,13 @@ if(savedPlan === 'ceo'){
   if(currentPlan){
     currentPlan.textContent = 'CEO'
   }
+
+const planBtn = document.getElementById('ceo-plan-btn')
+
+if(planBtn){
+  planBtn.textContent = 'Plano Ativo'
+}
+  
 }
   
 </script>
