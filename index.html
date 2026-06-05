@@ -1921,6 +1921,23 @@ body.ceo-mode .ceo-only{
 
   <!-- ─── REPORTS ─── -->
   <div id="pg-rep" class="page">
+
+<div id="reports-locked" class="card card-p" style="margin:20px">
+
+  <div style="font-size:48px;text-align:center">
+    🔒
+  </div>
+
+  <div style="text-align:center;margin-top:10px">
+    <h3>Relatórios Premium</h3>
+
+    <p style="margin-top:8px;color:var(--t3)">
+      Disponível apenas para assinantes do Plano CEO.
+    </p>
+  </div>
+
+</div>
+    
     <div class="page-top" style="margin-bottom:24px">
       <p class="page-title">Relatórios</p>
       <p class="page-subtitle">Análise dos seus gastos</p>
@@ -1969,7 +1986,7 @@ body.ceo-mode .ceo-only{
           <i class="ti ti-plus"></i>
         </button>
       </div>
-      <button class="nav-btn" id="nb-rep" onclick="openPremiumPage('rep')">
+      <button class="nav-btn" id="nb-rep" onclick="goPage('rep')">
         <i class="ti ti-chart-pie-2"></i>
         <span>Relatórios</span>
       </button>
