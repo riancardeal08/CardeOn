@@ -3661,6 +3661,13 @@ if(isCEOPlan()){
   document.getElementById('ceo-plan-btn').textContent = 'Plano Ativo'
 
   console.log(isCEOPlan())
+
+const reportsLocked =
+  document.getElementById('reports-locked')
+
+if(reportsLocked){
+  reportsLocked.style.display = 'none'
+}
   
   toast('Plano CEO ativado')
 }
