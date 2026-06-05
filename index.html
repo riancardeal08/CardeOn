@@ -3763,6 +3763,31 @@ if(reportsBody){
   toast('Plano CEO ativado')
 }
 
+function applyThemePack(theme){
+
+  document.body.classList.remove(
+    'theme-gold',
+    'theme-blue'
+  )
+
+  if(theme === 'gold'){
+    document.body.classList.add('theme-gold')
+    localStorage.setItem('theme-pack', 'gold')
+    toast('Tema CEO Gold aplicado')
+    return
+  }
+
+  if(theme === 'blue'){
+    document.body.classList.add('theme-blue')
+    localStorage.setItem('theme-pack', 'blue')
+    toast('Tema Blue Elite aplicado')
+    return
+  }
+
+  localStorage.setItem('theme-pack', 'dark')
+  toast('Tema padrão aplicado')
+}
+  
   function activateFreePlan(){
 
     if(!isCEOPlan()){
