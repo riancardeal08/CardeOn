@@ -1628,6 +1628,56 @@ body.ceo-mode .ceo-only{
     Aplicar
   </button>
 </div>
+
+/* TEMA PORSCHE */
+
+.theme-porsche{
+  --bg:#030303;
+  --s1:#0b0b0c;
+  --s2:#121214;
+  --s3:#1b1a18;
+
+  --acc:#d6b16a;
+  --acc-soft:#f0c879;
+  --acc-bd:rgba(240,200,121,.28);
+}
+
+.theme-porsche .card{
+  border-color:rgba(240,200,121,.18);
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.45),
+    0 0 22px rgba(240,200,121,.06);
+}
+
+.theme-porsche .hero-amount{
+  color:#f0c879;
+  text-shadow:0 0 22px rgba(240,200,121,.18);
+}
+
+.theme-porsche .nav-inner{
+  border-color:rgba(240,200,121,.16);
+}
+
+.theme-porsche .save-btn{
+  background:linear-gradient(135deg,#d6b16a,#f0c879);
+}
+
+.theme-porsche::before{
+  content:'';
+  position:fixed;
+  inset:-40%;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(240,200,121,.10), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(255,255,255,.04), transparent 25%);
+  animation:porscheGlow 8s ease-in-out infinite alternate;
+  z-index:0;
+}
+
+@keyframes porscheGlow{
+  from{ transform:translateY(0) rotate(0deg); opacity:.45; }
+  to{ transform:translateY(20px) rotate(4deg); opacity:.8; }
+}
   
 </style>
 </head>
