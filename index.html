@@ -3623,6 +3623,11 @@ function saveToVault(){
 }
 
 function activateCEOPlan(){
+
+if(isCEOPlan()){
+  return
+}
+  
   localStorage.setItem('plan', 'ceo')
   document.getElementById('current-plan').textContent = 'CEO'
 
