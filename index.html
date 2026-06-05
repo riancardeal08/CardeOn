@@ -2878,6 +2878,19 @@ function toggleFPanel(){
 
 // ── Reports ──
 function rRep(){
+
+if(!isCEOPlan()){
+  const reportsLocked = document.getElementById('reports-locked')
+  const reportsBody = document.getElementById('r-body')
+  const reportsEmpty = document.getElementById('r-empty')
+
+  if(reportsLocked) reportsLocked.style.display = 'block'
+  if(reportsBody) reportsBody.style.display = 'none'
+  if(reportsEmpty) reportsEmpty.style.display = 'none'
+
+  return
+}
+  
   const empty=exps.length===0
   document.getElementById('r-empty').style.display=empty?'flex':'none'
   document.getElementById('r-body').style.display=empty?'none':'block'
