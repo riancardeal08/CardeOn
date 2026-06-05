@@ -1969,7 +1969,7 @@ body.ceo-mode .ceo-only{
           <i class="ti ti-plus"></i>
         </button>
       </div>
-      <button class="nav-btn" id="nb-rep" onclick="goPage('rep')">
+      <button class="nav-btn" id="nb-rep" onclick="openPremiumPage('rep')">
         <i class="ti ti-chart-pie-2"></i>
         <span>Relatórios</span>
       </button>
@@ -2564,6 +2564,17 @@ function goPage(p){
   if(p==='dash') rDash()
   if(p==='hist') rHist()
   if(p==='rep')  rRep()
+}
+
+    function openPremiumPage(page){
+
+  if(!isCEOPlan()){
+    toast('Disponível apenas no Plano CEO')
+    goPage('plans')
+    return
+  }
+
+  goPage(page)
 }
 
 // ── Dashboard ──
