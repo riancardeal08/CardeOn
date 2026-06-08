@@ -3916,7 +3916,7 @@ function withdrawFromVault(){
   finance.vault = vault - amount
   finance.available = Number(finance.available || 0) + amount
 
-  localStorage.setItem('finance', JSON.stringify(finance))
+  saveFinance()
 
   closeVaultWithdrawModal()
   rDash()
@@ -3945,8 +3945,8 @@ function saveToVault(){
   finance.available = available - amount
   finance.vault = Number(finance.vault || 0) + amount
 
-  localStorage.setItem('finance', JSON.stringify(finance))
-
+ saveFinance()
+  
   closeVaultModal()
   rDash()
   rConfig()
