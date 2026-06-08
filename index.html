@@ -3710,6 +3710,14 @@ const PWA = (() => {
 
   // ── Init ─────────────────────────────────────────────
   function init() {
+
+const savedThemePack =
+  localStorage.getItem('theme-pack')
+
+if(savedThemePack){
+  applyThemePack(savedThemePack)
+}
+    
     // Splash
     initSplash();
 
