@@ -2022,10 +2022,34 @@ backdrop-filter:blur(20px);
 
   font-size:12px;
 ">
-  🎯 Meta:
-  <span id="goal-value">
-    R$ 0,00
-  </span>
+  <div class="card card-p ceo-only" style="gap:12px">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <div style="font-size:10px;color:var(--t3)">🎯 Meta financeira</div>
+      <div id="goal-value" style="margin-top:6px;font-size:18px;font-weight:700">
+        R$ 0,00
+      </div>
+    </div>
+
+    <div id="goal-percent" style="font-size:18px;font-weight:800;color:#5cdb95">
+      0%
+    </div>
+  </div>
+
+  <div style="height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden">
+    <div id="goal-bar" style="
+      width:0%;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,#5cdb95,#8cffbf);
+      transition:.6s ease;
+    "></div>
+  </div>
+
+  <div id="goal-text" style="font-size:11px;color:var(--t3)">
+    R$ 0,00 de R$ 0,00
+  </div>
+</div>
 
   <br>
 
@@ -3079,6 +3103,20 @@ if(monthResult < 0){
   }).join('')
 
   document.getElementById('d-recent').innerHTML = exps.slice(0,4).map(e=>txRow(e)).join('')
+
+const goal = Number(finance.goal || 0);
+const saved = Number(finance.vault || 0);
+
+const percent = goal > 0
+  ? Math.min((saved / goal) * 100, 100)
+  : 0;
+
+document.getElementById('goal-value').textContent = money(goal);
+document.getElementById('goal-percent').textContent = percent.toFixed(0) + '%';
+document.getElementById('goal-bar').style.width = percent + '%';
+document.getElementById('goal-text').textContent =
+  `${money(saved)} de ${money(goal)}`;
+
 }
 
 // ── Transaction row ──
