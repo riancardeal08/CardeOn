@@ -3032,6 +3032,10 @@ document.getElementById('total-balance').textContent = fmtR(totalBalance)
 document.getElementById('goal-value').textContent =
   fmtR(goal)
 
+const goalProgress = goal > 0
+  ? Math.min(Math.round((vault / goal) * 100), 100)
+  : 0
+  
 const goalPercentEl = document.getElementById('goal-percent')
 const goalBarEl = document.getElementById('goal-bar')
 const goalTextEl = document.getElementById('goal-text')
