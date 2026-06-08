@@ -3032,8 +3032,15 @@ document.getElementById('total-balance').textContent = fmtR(totalBalance)
 document.getElementById('goal-value').textContent =
   fmtR(goal)
 
-document.getElementById('goal-progress').textContent =
-  'Progresso: ' + goalProgress + '%'
+const goalPercentEl = document.getElementById('goal-percent')
+const goalBarEl = document.getElementById('goal-bar')
+const goalTextEl = document.getElementById('goal-text')
+
+if(goalPercentEl && goalBarEl && goalTextEl){
+  goalPercentEl.textContent = goalProgress + '%'
+  goalBarEl.style.width = goalProgress + '%'
+  goalTextEl.textContent = fmtR(vault) + ' de ' + fmtR(goal)
+}
   
   const totalEl =
   document.getElementById('total-balance')
