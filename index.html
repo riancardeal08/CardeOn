@@ -2306,7 +2306,8 @@ backdrop-filter:blur(20px);
 
       <button
   class="save-btn"
-  style="margin-top:16px">
+  style="margin-top:16px"
+  onclick="openInvestmentModal()">
 
   + Adicionar Investimento
 
@@ -3969,6 +3970,12 @@ function openVaultModal(){
   document.getElementById('vault-withdraw-modal').classList.remove('open')
 }
 
+function openInvestmentModal(){
+
+  toast('Em breve: cadastro de investimentos')
+
+}
+  
 function withdrawFromVault(){
   const amount = Number(document.getElementById('vault-withdraw-amount').value || 0)
   const vault = Number(finance.vault || 0)
