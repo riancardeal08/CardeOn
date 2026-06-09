@@ -3099,19 +3099,6 @@ if(monthResult < 0){
 
   document.getElementById('d-recent').innerHTML = exps.slice(0,4).map(e=>txRow(e)).join('')
 
-const goal = Number(finance.goal || 0);
-const saved = Number(finance.vault || 0);
-
-const percent = goal > 0
-  ? Math.min((saved / goal) * 100, 100)
-  : 0;
-
-document.getElementById('goal-value').textContent = money(goal);
-document.getElementById('goal-percent').textContent = percent.toFixed(0) + '%';
-document.getElementById('goal-bar').style.width = percent + '%';
-document.getElementById('goal-text').textContent =
-  `${money(saved)} de ${money(goal)}`;
-
 }
 
 // ── Transaction row ──
