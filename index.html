@@ -4062,6 +4062,36 @@ function closeInvestmentModal(){
     .classList.remove('open')
 
 }
+
+  function saveInvestment(){
+
+  const name =
+    document.getElementById('invest-name').value.trim()
+
+    const amount =
+  Number(
+    document.getElementById('invest-amount').value || 0
+  )
+
+if(!name){
+
+  toast('Informe o nome do investimento')
+
+  return
+
+}
+
+    if(amount <= 0){
+
+  toast('Informe um valor válido')
+
+  return
+
+}
+
+    toast('Investimento salvo')
+  
+}
   
 function withdrawFromVault(){
   const amount = Number(document.getElementById('vault-withdraw-amount').value || 0)
