@@ -2610,6 +2610,55 @@ backdrop-filter:blur(20px);
 
   </div>
 </div>
+
+  <div id="investment-modal" class="modal-overlay" onclick="closeInvestmentModal()">
+  <div class="sheet" onclick="event.stopPropagation()">
+
+    <div class="handle"><span></span></div>
+
+    <div class="sheet-hd">
+      <p class="sheet-title">Novo investimento</p>
+
+      <button class="close-btn" onclick="closeInvestmentModal()">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+
+    <div class="field">
+      <span class="field-label">Nome</span>
+
+      <div class="input-wrap">
+        <input
+          type="text"
+          id="invest-name"
+          placeholder="Ex: Tesouro Selic"
+        >
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="field-label">Valor</span>
+
+      <div class="input-wrap">
+        <span class="input-curr">R$</span>
+
+        <input
+          type="number"
+          id="invest-amount"
+          class="input-big"
+          placeholder="0,00"
+          step="0.01"
+          min="0"
+        >
+      </div>
+    </div>
+
+    <button class="save-btn" onclick="saveInvestment()">
+      Salvar investimento
+    </button>
+
+  </div>
+</div>
   
   <div id="modal-overlay" class="modal-overlay" onclick="overlayClick(event)">
   <div class="sheet" id="sheet-el">
@@ -3972,7 +4021,17 @@ function openVaultModal(){
 
 function openInvestmentModal(){
 
-  toast('Em breve: cadastro de investimentos')
+  document
+    .getElementById('investment-modal')
+    .classList.add('open')
+
+}
+
+function closeInvestmentModal(){
+
+  document
+    .getElementById('investment-modal')
+    .classList.remove('open')
 
 }
   
