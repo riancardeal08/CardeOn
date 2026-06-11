@@ -4175,6 +4175,10 @@ if(reportsLocked){
 if(reportsBody){
   reportsBody.style.display = 'block'
 }
+
+  document.getElementById('nb-rep').style.display = ''
+document.getElementById('nb-themes').style.display = ''
+document.getElementById('nb-invest').style.display = ''
   
   toast('Plano CEO ativado')
 }
@@ -4246,6 +4250,10 @@ const reportsBody =
 if(reportsBody){
   reportsBody.style.display = 'none'
 }
+
+  document.getElementById('nb-rep').style.display = 'none'
+document.getElementById('nb-themes').style.display = 'none'
+document.getElementById('nb-invest').style.display = 'none'
 
   toast('Plano Grátis ativado')
 }
