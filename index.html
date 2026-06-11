@@ -4147,6 +4147,22 @@ function saveToVault(){
   toast('Valor guardado no cofre')
 }
 
+  function updatePlanNavbar(){
+
+  const isCEO =
+    localStorage.getItem('plan') === 'ceo'
+
+  document.getElementById('nb-rep').style.display =
+    isCEO ? '' : 'none'
+
+  document.getElementById('nb-themes').style.display =
+    isCEO ? '' : 'none'
+
+  document.getElementById('nb-invest').style.display =
+    isCEO ? '' : 'none'
+
+}
+
 function activateCEOPlan(){
 
 if(isCEOPlan()){
@@ -4214,6 +4230,22 @@ if(theme === 'porsche'){
   
   localStorage.setItem('theme-pack', 'dark')
   toast('Tema padrão aplicado')
+}
+
+  function updatePlanNavbar(){
+
+  const isCEO =
+    localStorage.getItem('plan') === 'ceo'
+
+  document.getElementById('nb-rep').style.display =
+    isCEO ? '' : 'none'
+
+  document.getElementById('nb-themes').style.display =
+    isCEO ? '' : 'none'
+
+  document.getElementById('nb-invest').style.display =
+    isCEO ? '' : 'none'
+
 }
   
   function activateFreePlan(){
