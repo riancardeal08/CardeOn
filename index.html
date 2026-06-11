@@ -2450,6 +2450,47 @@ backdrop-filter:blur(20px);
 
 <div style="height:18px"></div>
 
+      <div class="card card-p ceo-only" style="margin-bottom:18px">
+
+  <div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+  ">
+
+    <div>
+
+      <div style="
+        font-weight:600;
+        color:white;
+      ">
+        🧹 Visual Limpo
+      </div>
+
+      <div style="
+        font-size:12px;
+        opacity:.7;
+        margin-top:4px;
+      ">
+        Ocultar Temas, Relatórios e Investimentos da barra inferior
+      </div>
+
+    </div>
+
+    <label class="switch">
+      <input
+        type="checkbox"
+        id="clean-nav-toggle"
+        onchange="toggleCleanNavbar()">
+
+      <span class="slider"></span>
+    </label>
+
+  </div>
+
+</div>
+
 <div class="field" style="padding-left:20px">
   <span class="field-label">Aparência</span>
 
@@ -4165,6 +4206,20 @@ function saveToVault(){
 
 }
 
+function toggleCleanNavbar(){
+
+  const enabled =
+    document.getElementById('clean-nav-toggle').checked
+
+  localStorage.setItem(
+    'clean-navbar',
+    enabled ? '1' : '0'
+  )
+
+updatePlanNavbar()
+  
+}
+  
 function activateCEOPlan(){
 
 if(isCEOPlan()){
@@ -4241,15 +4296,17 @@ if(theme === 'porsche'){
   const isCEO =
     localStorage.getItem('plan') === 'ceo'
 
+    const cleanNavbar =
+  localStorage.getItem('clean-navbar') === '1'
+
   document.getElementById('nb-rep').style.display =
-    isCEO ? '' : 'none'
+  (isCEO && !cleanNavbar) ? '' : 'none'
 
   document.getElementById('nb-themes').style.display =
-    isCEO ? '' : 'none'
+  (isCEO && !cleanNavbar) ? '' : 'none'
 
   document.getElementById('nb-invest').style.display =
-    isCEO ? '' : 'none'
-
+  (isCEO && !cleanNavbar) ? '' : 'none'
 }
   
   function activateFreePlan(){
