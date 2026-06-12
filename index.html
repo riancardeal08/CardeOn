@@ -3902,6 +3902,16 @@ if(savedThemePack){
 }
 
     updatePlanNavbar()
+
+const cleanNavSaved =
+  localStorage.getItem('clean-navbar') === '1'
+
+const cleanNavToggle =
+  document.getElementById('clean-nav-toggle')
+
+if(cleanNavToggle){
+  cleanNavToggle.checked = cleanNavSaved
+}
     
     // Splash
     initSplash();
