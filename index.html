@@ -4202,28 +4202,6 @@ function saveToVault(){
   toast('Valor guardado no cofre')
 }
 
-  function updatePlanNavbar(){
-
-  const isCEO =
-    localStorage.getItem('plan') === 'ceo'
-
-    document.querySelectorAll('.plan-ceo-only')
-  .forEach(el=>{
-    el.style.display =
-      isCEO ? '' : 'none'
-  })
-
-  document.getElementById('nb-rep').style.display =
-    isCEO ? '' : 'none'
-
-  document.getElementById('nb-themes').style.display =
-    isCEO ? '' : 'none'
-
-  document.getElementById('nb-invest').style.display =
-    isCEO ? '' : 'none'
-
-}
-
 function toggleCleanNavbar(){
 
   const enabled =
@@ -4313,6 +4291,12 @@ if(theme === 'porsche'){
 
   const isCEO =
     localStorage.getItem('plan') === 'ceo'
+
+    document.querySelectorAll('.plan-ceo-only')
+  .forEach(el=>{
+    el.style.display =
+      isCEO ? '' : 'none'
+  })
 
     const cleanNavbar =
   localStorage.getItem('clean-navbar') === '1'
