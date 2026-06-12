@@ -4207,6 +4207,12 @@ function saveToVault(){
   const isCEO =
     localStorage.getItem('plan') === 'ceo'
 
+    document.querySelectorAll('.plan-ceo-only')
+  .forEach(el=>{
+    el.style.display =
+      isCEO ? '' : 'none'
+  })
+
   document.getElementById('nb-rep').style.display =
     isCEO ? '' : 'none'
 
