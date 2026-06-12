@@ -1875,9 +1875,33 @@ backdrop-filter:blur(20px);
   <div id="pg-dash" class="page active">
     <div class="hero">
       <p class="hero-eyebrow" id="d-month"></p>
-      <p class="hero-amount empty" id="d-total">
-        <span class="curr">R$</span><span id="d-total-num">0,00</span>
-      </p>
+      <div style="
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+">
+
+  <p class="hero-amount empty" id="d-total" style="margin:0">
+    <span class="curr">R$</span>
+    <span id="d-total-num">0,00</span>
+  </p>
+
+  <button
+    id="hide-values-btn"
+    onclick="toggleHideValues()"
+    style="
+      background:none;
+      border:none;
+      color:var(--t2);
+      font-size:24px;
+      cursor:pointer;
+    "
+  >
+    👁️
+  </button>
+
+</div>
 
      <div id="finance-panel" style="
   margin-top:18px;
