@@ -4125,6 +4125,31 @@ document
     
 }
 
+  function updateHiddenValues(){
+
+    const hidden =
+  localStorage.getItem('hide-values') === '1'
+
+    function updateHiddenValues(){
+
+  const hidden =
+    localStorage.getItem('hide-values') === '1'
+
+  const totalEl =
+    document.getElementById('d-total-num')
+
+  if(totalEl){
+
+    totalEl.textContent =
+      hidden
+        ? '••••••'
+        : fmtR(meTotal()).replace('R$ ','')
+  }
+
+}
+
+}
+
 function openVaultModal(){
   document.getElementById('vault-amount').value = ''
   document.getElementById('vault-modal').classList.add('open')
