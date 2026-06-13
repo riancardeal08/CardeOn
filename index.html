@@ -4112,7 +4112,17 @@ document
 }
 
   function toggleHideValues(){
-  alert('Botão funcionando')
+
+  const hidden =
+    localStorage.getItem('hide-values') === '1'
+
+  localStorage.setItem(
+    'hide-values',
+    hidden ? '0' : '1'
+  )
+
+  console.log(localStorage.getItem('hide-values'))
+
 }
 
 function openVaultModal(){
