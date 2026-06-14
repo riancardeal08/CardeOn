@@ -1924,7 +1924,7 @@ backdrop-filter:blur(20px);
     </button>
   </div>
 
-  <div class="card card-p ceo-only">
+  <div class="card card-p ceo-only" id="credit-card">
     <div style="font-size:10px;color:var(--t3)">Crédito</div>
     <div id="credit-balance" style="margin-top:6px;font-size:14px;font-weight:700;">
       R$ 0,00
@@ -4139,6 +4139,9 @@ document
     const availableCard =
   document.getElementById('available-card')
 
+    const creditCard =
+  document.getElementById('credit-card')
+
   if(totalEl){
     totalEl.textContent =
       hidden ? '••••••' : fmtR(meTotal()).replace('R$ ','')
@@ -4151,6 +4154,11 @@ document
 
     if(availableCard){
   availableCard.style.display =
+    hidden ? 'none' : ''
+}
+
+    if(creditCard){
+  creditCard.style.display =
     hidden ? 'none' : ''
 }
 
