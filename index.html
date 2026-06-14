@@ -4148,6 +4148,14 @@ document
     const totalCard =
   document.getElementById('total-card')
 
+    if(totalCard){
+  totalCard.style.setProperty(
+    'display',
+    hidden ? 'none' : 'flex',
+    'important'
+  )
+}
+
   if(totalEl){
     totalEl.textContent =
       hidden ? '••••••' : fmtR(meTotal()).replace('R$ ','')
