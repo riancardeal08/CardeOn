@@ -1963,7 +1963,7 @@ backdrop-filter:blur(20px);
     
   </div>
 
-  <div class="card card-p ceo-only">
+  <div class="card card-p ceo-only" id="total-card">
     <div style="font-size:10px;color:var(--t3)">Total</div>
     <div id="total-balance" style="margin-top:6px;font-size:14px;font-weight:700;">
       R$ 0,00
@@ -4144,6 +4144,9 @@ document
 
     const vaultCard =
   document.getElementById('vault-card')
+
+    const totalCard =
+  document.getElementById('total-card')
 
   if(totalEl){
     totalEl.textContent =
