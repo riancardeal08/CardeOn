@@ -4193,12 +4193,12 @@ document
   }
 }
 
-    if(vaultCard){
-  vaultCard.style.setProperty(
-    'display',
-    hidden ? 'none' : ''
-    'important'
-  )
+   if(vaultCard){
+  if(hidden){
+    vaultCard.style.setProperty('display','none','important')
+  }else{
+    vaultCard.style.removeProperty('display')
+  }
 }
 
 }
