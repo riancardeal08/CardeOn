@@ -4182,11 +4182,15 @@ document
     
 
     if(creditCard){
-  creditCard.style.setProperty(
-    'display',
-    hidden ? 'none' : ''
-    'important'
-  )
+  if(hidden){
+    creditCard.style.setProperty(
+      'display',
+      'none',
+      'important'
+    )
+  }else{
+    creditCard.style.removeProperty('display')
+  }
 }
 
     if(vaultCard){
