@@ -4160,8 +4160,11 @@ document
     
 
     if(creditCard){
-  creditCard.style.display =
-    hidden ? 'none' : ''
+  creditCard.style.setProperty(
+    'display',
+    hidden ? 'none' : 'flex',
+    'important'
+  )
 }
 
 }
