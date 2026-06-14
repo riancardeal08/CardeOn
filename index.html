@@ -2003,7 +2003,7 @@ backdrop-filter:blur(20px);
       👑 CEO MODE ACTIVE
     </div>
 
-<div class="card card-p" style="min-width:160px">
+<div class="card card-p" id="income-month-card" style="min-width:160px">
   <div style="font-size:10px;color:var(--t3)">
     💰 Receitas do mês
   </div>
@@ -4148,12 +4148,20 @@ document
     const totalCard =
   document.getElementById('total-card')
 
+    const incomeMonthCard =
+  document.getElementById('income-month-card')
+
     if(totalCard){
   totalCard.style.setProperty(
     'display',
     hidden ? 'none' : 'flex',
     'important'
   )
+}
+
+    if(incomeMonthCard){
+  incomeMonthCard.style.display =
+    hidden ? 'none' : ''
 }
 
   if(totalEl){
