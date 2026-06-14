@@ -4152,11 +4152,11 @@ document
   document.getElementById('income-month-card')
 
     if(totalCard){
-  totalCard.style.setProperty(
-    'display',
-    hidden ? 'none' : ''
-    'important'
-  )
+  if(hidden){
+    totalCard.style.setProperty('display','none','important')
+  }else{
+    totalCard.style.removeProperty('display')
+  }
 }
 
     if(incomeMonthCard){
