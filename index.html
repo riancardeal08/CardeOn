@@ -4136,6 +4136,9 @@ document
     const btn =
   document.getElementById('hide-values-btn')
 
+    const availableCard =
+  document.getElementById('available-card')
+
   if(totalEl){
     totalEl.textContent =
       hidden ? '••••••' : fmtR(meTotal()).replace('R$ ','')
@@ -4144,6 +4147,11 @@ document
     if(btn){
   btn.textContent =
     hidden ? '🙈' : '👁️'
+}
+
+    if(availableCard){
+  availableCard.style.display =
+    hidden ? 'none' : ''
 }
 
 }
