@@ -1934,7 +1934,7 @@ backdrop-filter:blur(20px);
     </div>
   </div>
 
-  <div class="card card-p ceo-only">
+  <div class="card card-p ceo-only" id="vault-card">
     <div style="font-size:10px;color:var(--t3)">Cofre</div>
     <div id="vault-balance" style="margin-top:6px;font-size:14px;font-weight:700;">
       R$ 0,00
@@ -4142,6 +4142,9 @@ document
     const creditCard =
   document.getElementById('credit-card')
 
+    const vaultCard =
+  document.getElementById('vault-card')
+
   if(totalEl){
     totalEl.textContent =
       hidden ? '••••••' : fmtR(meTotal()).replace('R$ ','')
@@ -4161,6 +4164,14 @@ document
 
     if(creditCard){
   creditCard.style.setProperty(
+    'display',
+    hidden ? 'none' : 'flex',
+    'important'
+  )
+}
+
+    if(vaultCard){
+  vaultCard.style.setProperty(
     'display',
     hidden ? 'none' : 'flex',
     'important'
