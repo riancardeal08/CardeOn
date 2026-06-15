@@ -4167,6 +4167,11 @@ document
     hidden ? 'none' : ''
 }
 
+    if(expenseMonthCard){
+  expenseMonthCard.style.display =
+    hidden ? 'none' : ''
+}
+
   if(totalEl){
     totalEl.textContent =
       hidden ? '••••••' : fmtR(meTotal()).replace('R$ ','')
