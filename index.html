@@ -4154,6 +4154,9 @@ document
     const expenseMonthCard =
   document.getElementById('expense-month-card')
 
+    const resultMonthCard =
+  document.getElementById('result-month-card')
+
     if(totalCard){
   if(hidden){
     totalCard.style.setProperty('display','none','important')
@@ -4169,6 +4172,11 @@ document
 
     if(expenseMonthCard){
   expenseMonthCard.style.display =
+    hidden ? 'none' : ''
+}
+
+    if(resultMonthCard){
+  resultMonthCard.style.display =
     hidden ? 'none' : ''
 }
 
