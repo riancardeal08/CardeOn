@@ -4184,8 +4184,11 @@ document
 }
 
     if(goalCard){
-  goalCard.style.display =
-    hidden ? 'none' : ''
+  if(hidden){
+    goalCard.style.setProperty('display','none','important')
+  }else{
+    goalCard.style.removeProperty('display')
+  }
 }
 
   if(totalEl){
