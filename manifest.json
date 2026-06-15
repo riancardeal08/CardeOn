@@ -1,6 +1,6 @@
 {
-  "name": "FinTrack",
-  "short_name": "FinTrack",
+  "name": "CardeOn",
+  "short_name": "CardeOn",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#030303",
