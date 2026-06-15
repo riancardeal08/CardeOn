@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050506">
-<title>FinTrack</title>
+<title>CardeOn</title>
 
 <!-- PWA manifest -->
 <link rel="manifest" href="manifest.json">
@@ -12,7 +12,7 @@
 <!-- iOS PWA support -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="FinTrack">
+<meta name="apple-mobile-web-app-title" content="CardeOn">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no">
 
@@ -30,8 +30,8 @@
 <!-- iOS Splash screens (portrait) -->
 
 <!-- SEO & social -->
-<meta name="description" content="Controle seus gastos de forma elegante. FinTrack — finanças pessoais premium.">
-<meta name="application-name" content="FinTrack">
+<meta name="description" content="Controle seus gastos de forma elegante. CardeOn — finanças pessoais premium.">
+<meta name="application-name" content="CardeOn">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
@@ -1793,7 +1793,7 @@ backdrop-filter:blur(20px);
 />
   
   </div>
-  <p class="splash-wordmark">FinTrack</p>
+  <p class="splash-wordmark">CardeOn</p>
   <p class="splash-tagline">Controle inteligente de gastos</p>
   <div class="splash-ring">
     <div class="splash-dot"></div>
@@ -1821,7 +1821,7 @@ backdrop-filter:blur(20px);
         
       </div>
       <div class="pwa-card-info">
-        <p class="pwa-card-name">FinTrack</p>
+        <p class="pwa-card-name">CardeOn</p>
         <p class="pwa-card-desc">Adicionar à tela inicial</p>
       </div>
       <button class="pwa-dismiss" onclick="PWA.dismissInstall()" aria-label="Fechar">✕</button>
@@ -1850,7 +1850,7 @@ backdrop-filter:blur(20px);
       <p>
         Toque em 
         <span class="pwa-ios-share"><svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 1v8M2 3.5L5 1l3 2.5" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="5" width="8" height="7" rx="1.5" stroke="white" stroke-width="1.3"/></svg></span>
-        e depois <strong>"Adicionar à Tela Inicial"</strong> para instalar o FinTrack.
+        e depois <strong>"Adicionar à Tela Inicial"</strong> para instalar o CardeOn.
       </p>
     </div>
   </div>
@@ -2351,7 +2351,7 @@ backdrop-filter:blur(20px);
 
     <p class="page-title">Temas</p>
     <p class="page-subtitle">
-      Personalize a aparência do FinTrack
+      Personalize a aparência do CardeOn
     </p>
 
     <div class="card card-p" style="margin-top:20px">
@@ -3766,12 +3766,12 @@ load();
 
 
 // Inline SW as blob — works from any origin/file
-const _swCode = "/* FinTrack Service Worker v1.0.0\n   Cache strategy: Cache-first for assets, network-first for dynamic */\n\nconst CACHE_NAME = 'fintrack-v1';\nconst OFFLINE_URL = './index.html';\n\n// Assets to pre-cache on install\nconst PRECACHE_ASSETS = [\n  './index.html',\n];\n\n// External CDN resources to cache on first use\nconst CACHEABLE_ORIGINS = [\n  'fonts.googleapis.com',\n  'fonts.gstatic.com',\n  'cdn.jsdelivr.net',\n];\n\n// \u2500\u2500 Install: pre-cache shell \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nself.addEventListener('install', (event) => {\n  event.waitUntil(\n    caches.open(CACHE_NAME).then((cache) => {\n      return cache.addAll(PRECACHE_ASSETS);\n    }).then(() => {\n      // Activate immediately \u2014 don't wait for old SW to be released\n      return self.skipWaiting();\n    })\n  );\n});\n\n// \u2500\u2500 Activate: prune old caches \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nself.addEventListener('activate', (event) => {\n  event.waitUntil(\n    caches.keys().then((keys) => {\n      return Promise.all(\n        keys\n          .filter((key) => key !== CACHE_NAME)\n          .map((key) => caches.delete(key))\n      );\n    }).then(() => {\n      // Take control of all open clients immediately\n      return self.clients.claim();\n    })\n  );\n});\n\n// \u2500\u2500 Fetch: smart cache strategy \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nself.addEventListener('fetch', (event) => {\n  const { request } = event;\n  const url = new URL(request.url);\n\n  // Only handle GET requests\n  if (request.method !== 'GET') return;\n\n  // Skip chrome-extension and non-http\n  if (!url.protocol.startsWith('http')) return;\n\n  // \u2500\u2500 Strategy: Cache-first for known CDN assets (fonts, icons lib)\n  if (CACHEABLE_ORIGINS.some((origin) => url.hostname.includes(origin))) {\n    event.respondWith(cacheFirst(request));\n    return;\n  }\n\n  // \u2500\u2500 Strategy: Network-first for same-origin navigation (HTML)\n  if (request.mode === 'navigate') {\n    event.respondWith(networkFirstWithOfflineFallback(request));\n    return;\n  }\n\n  // \u2500\u2500 Strategy: Cache-first for local static assets (SVG, PNG, JS, CSS)\n  if (url.origin === self.location.origin) {\n    event.respondWith(cacheFirst(request));\n    return;\n  }\n});\n\n// Cache-first: try cache, fall back to network and cache result\nasync function cacheFirst(request) {\n  const cached = await caches.match(request);\n  if (cached) return cached;\n\n  try {\n    const response = await fetch(request);\n    if (response && response.status === 200) {\n      const cache = await caches.open(CACHE_NAME);\n      cache.put(request, response.clone());\n    }\n    return response;\n  } catch {\n    // No network, no cache \u2014 return empty response gracefully\n    return new Response('', { status: 408 });\n  }\n}\n\n// Network-first with offline fallback for navigation\nasync function networkFirstWithOfflineFallback(request) {\n  try {\n    const response = await fetch(request);\n    if (response && response.status === 200) {\n      const cache = await caches.open(CACHE_NAME);\n      cache.put(request, response.clone());\n    }\n    return response;\n  } catch {\n    const cached = await caches.match(request);\n    if (cached) return cached;\n\n    // Return the offline shell\n    const offlinePage = await caches.match(OFFLINE_URL);\n    return offlinePage || new Response('Offline', {\n      status: 503,\n      headers: { 'Content-Type': 'text/plain' }\n    });\n  }\n}\n\n// \u2500\u2500 Message: force update from app \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nself.addEventListener('message', (event) => {\n  if (event.data && event.data.type === 'SKIP_WAITING') {\n    self.skipWaiting();\n  }\n});\n";
+const _swCode = "/* CardeOn Service Worker v1.0.0\n   Cache strategy: Cache-first for assets, network-first for dynamic */\n\nconst CACHE_NAME = 'CardeOn-v1';\nconst OFFLINE_URL = './index.html';\n\n// Assets to pre-cache on install\nconst PRECACHE_ASSETS = [\n  './index.html',\n];\n\n// External CDN resources to cache on first use\nconst CACHEABLE_ORIGINS = [\n  'fonts.googleapis.com',\n  'fonts.gstatic.com',\n  'cdn.jsdelivr.net',\n];\n\n// \u2500\u2500 Install: pre-cache shell \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nself.addEventListener('install', (event) => {\n  event.waitUntil(\n    caches.open(CACHE_NAME).then((cache) => {\n      return cache.addAll(PRECACHE_ASSETS);\n    }).then(() => {\n      // Activate immediately \u2014 don't wait for old SW to be released\n      return self.skipWaiting();\n    })\n  );\n});\n\n// \u2500\u2500 Activate: prune old caches \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nself.addEventListener('activate', (event) => {\n  event.waitUntil(\n    caches.keys().then((keys) => {\n      return Promise.all(\n        keys\n          .filter((key) => key !== CACHE_NAME)\n          .map((key) => caches.delete(key))\n      );\n    }).then(() => {\n      // Take control of all open clients immediately\n      return self.clients.claim();\n    })\n  );\n});\n\n// \u2500\u2500 Fetch: smart cache strategy \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nself.addEventListener('fetch', (event) => {\n  const { request } = event;\n  const url = new URL(request.url);\n\n  // Only handle GET requests\n  if (request.method !== 'GET') return;\n\n  // Skip chrome-extension and non-http\n  if (!url.protocol.startsWith('http')) return;\n\n  // \u2500\u2500 Strategy: Cache-first for known CDN assets (fonts, icons lib)\n  if (CACHEABLE_ORIGINS.some((origin) => url.hostname.includes(origin))) {\n    event.respondWith(cacheFirst(request));\n    return;\n  }\n\n  // \u2500\u2500 Strategy: Network-first for same-origin navigation (HTML)\n  if (request.mode === 'navigate') {\n    event.respondWith(networkFirstWithOfflineFallback(request));\n    return;\n  }\n\n  // \u2500\u2500 Strategy: Cache-first for local static assets (SVG, PNG, JS, CSS)\n  if (url.origin === self.location.origin) {\n    event.respondWith(cacheFirst(request));\n    return;\n  }\n});\n\n// Cache-first: try cache, fall back to network and cache result\nasync function cacheFirst(request) {\n  const cached = await caches.match(request);\n  if (cached) return cached;\n\n  try {\n    const response = await fetch(request);\n    if (response && response.status === 200) {\n      const cache = await caches.open(CACHE_NAME);\n      cache.put(request, response.clone());\n    }\n    return response;\n  } catch {\n    // No network, no cache \u2014 return empty response gracefully\n    return new Response('', { status: 408 });\n  }\n}\n\n// Network-first with offline fallback for navigation\nasync function networkFirstWithOfflineFallback(request) {\n  try {\n    const response = await fetch(request);\n    if (response && response.status === 200) {\n      const cache = await caches.open(CACHE_NAME);\n      cache.put(request, response.clone());\n    }\n    return response;\n  } catch {\n    const cached = await caches.match(request);\n    if (cached) return cached;\n\n    // Return the offline shell\n    const offlinePage = await caches.match(OFFLINE_URL);\n    return offlinePage || new Response('Offline', {\n      status: 503,\n      headers: { 'Content-Type': 'text/plain' }\n    });\n  }\n}\n\n// \u2500\u2500 Message: force update from app \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nself.addEventListener('message', (event) => {\n  if (event.data && event.data.type === 'SKIP_WAITING') {\n    self.skipWaiting();\n  }\n});\n";
 const _swBlob = new Blob([_swCode], { type: 'application/javascript' });
 const _swURL = URL.createObjectURL(_swBlob);
 
 // ════════════════════════════════════════════════════════
-//  PWA Manager — FinTrack
+//  PWA Manager — CardeOn
 // ════════════════════════════════════════════════════════
 const PWA = (() => {
   let deferredPrompt = null;
@@ -3887,7 +3887,7 @@ const PWA = (() => {
       });
 
     } catch (err) {
-      console.warn('[FinTrack SW] Registration failed:', err);
+      console.warn('[CardeOn SW] Registration failed:', err);
     }
   }
 
