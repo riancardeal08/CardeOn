@@ -4183,6 +4183,11 @@ document
     hidden ? 'none' : ''
 }
 
+    if(goalCard){
+  goalCard.style.display =
+    hidden ? 'none' : ''
+}
+
   if(totalEl){
     totalEl.textContent =
       hidden ? '••••••' : fmtR(meTotal()).replace('R$ ','')
