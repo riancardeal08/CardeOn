@@ -1,4 +1,4 @@
-const CACHE = "fintrack-v1";
+const CACHE = "CardeOn-v1";
 
 self.addEventListener("install", () => {
   self.skipWaiting();
