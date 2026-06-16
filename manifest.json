@@ -9,7 +9,7 @@
   "description": "Controle financeiro minimalista",
   "icons": [
     {
-      "src": "./entrada-new.png",
+      "src": "./principal-new.png",
       "sizes": "192x192",
       "type": "image/png"
     },
